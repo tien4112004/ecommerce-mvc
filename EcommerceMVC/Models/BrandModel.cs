@@ -14,5 +14,6 @@ namespace EcommerceMVC.Models
 		[Required]
 		public string Slug { get; set; }
 		public int Status { get; set; }
+		public string? Image { get; set; }
 	}
 }

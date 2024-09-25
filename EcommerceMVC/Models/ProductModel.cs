@@ -13,7 +13,8 @@ namespace EcommerceMVC.Models
 		[Required(ErrorMessage = "Required")]
 		public string Description { get; set; }
 		public decimal Price { get; set; }
-
+		public string[] Images { get; set; } = new string[] { };
+	
 		public int BrandId { get; set; }
 		public int CategoryId { get; set; }
 

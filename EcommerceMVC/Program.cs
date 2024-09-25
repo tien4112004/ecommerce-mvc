@@ -1,3 +1,4 @@
+using System.Configuration;
 using EcommerceMVC.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,5 +32,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+
+var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<EcommerceDBContext>();
+SeedData.SeedingData(context);
 
 app.Run();
