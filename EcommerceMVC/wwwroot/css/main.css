@@ -36,6 +36,11 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+.price {
+	color: red;
 }
 
 .btn:hover, 
@@ -2520,4 +2525,17 @@ h2.title {
   color: #FE980F;
 }
 
+.fixed-size-image {
+	width: 400px;
+	height: 300px;
+	object-fit: cover; 
+}
 
+.image-container {
+	width: 400px; 
+	height: 300px;
+	border: 1px solid #ccc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

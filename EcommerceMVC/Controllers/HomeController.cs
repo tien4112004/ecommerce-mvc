@@ -1,4 +1,5 @@
 using EcommerceMVC.Models;
+using EcommerceMVC.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,18 @@ namespace EcommerceMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly EcommerceDBContext _context;
+        
+        public HomeController(ILogger<HomeController> logger, EcommerceDBContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var products = _context.Products.ToList();
+            return View(products);
         }
 
         public IActionResult Privacy()
