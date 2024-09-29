@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using EcommerceMVC.Repository.Validations;
 
 namespace EcommerceMVC.Models
 {
@@ -6,17 +8,24 @@ namespace EcommerceMVC.Models
 	{
 		[Key]
 		public int Id { get; set; }
-		[Required(ErrorMessage = "Required")]
+		[Required(ErrorMessage = "Product name is required")]
 		public string Name { get; set; }
-		[Required]
 		public string Slug { get; set; }
-		[Required(ErrorMessage = "Required")]
+		[Required(ErrorMessage = "Product description is required")]
 		public string Description { get; set; }
+		[Required]
 		public decimal Price { get; set; }
-		public string[] Images { get; set; } = new string[] { };
-	
+		public string Image { get; set; }
+		
+		[NotMapped]
+		[FileExtension]
+		public IFormFile ImageUpload { get; set; }
+		
+		[Required(ErrorMessage = "Brand has to be selected")]
 		public int BrandId { get; set; }
+		[Required(ErrorMessage = "Category has to be selected")]
 		public int CategoryId { get; set; }
+		
 
 		public CategoryModel Category { get; set; }
 		public BrandModel Brand { get; set; }

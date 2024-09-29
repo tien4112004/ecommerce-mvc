@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -26,8 +26,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Area\Admin\Models\" />
-    <Folder Include="Area\Admin\Views\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\Components\Brands\Default.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\Components\Categories\Default.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\_NotificationPartial.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\_ProductCard.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\_Sidebar.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Components\Brands\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Components\Categories\Default.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@
 			ProductId = product.Id;
 			ProductName = product.Name;
 			UnitPrice = product.Price;
-			Image = product.Images[0];
+			Image = product.Image;
 			Quantity = quantity;
 		}
 	}

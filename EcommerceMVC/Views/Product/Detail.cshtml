@@ -15,7 +15,7 @@
 			<!--product-details-->
 			<div class="col-sm-5">
 				<div class="view-product image-container">
-					<img class="fixed-size-image" src="~/images/@(Model.Images != null && Model.Images.Count() > 0 ? Model.Images[0] : "default.jpg")" alt="@Model.Name" />
+					<img class="fixed-size-image" src="~/images/@(Model.Image ?? "default.jpg")" alt="@Model.Name" />
 					<h3>ZOOM</h3>
 				</div>
 				<div id="similar-product" class="carousel slide" data-ride="carousel">
