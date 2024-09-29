@@ -49,11 +49,15 @@
 					<span>
 						<span class="price">US $@Model.Price</span>
 						<label>Quantity:</label>
-						<input type="text" value="1" />
-						<button type="button" class="btn btn-fefault cart">
-							<i class="fa fa-shopping-cart"></i>
-							Add to cart
-						</button>
+						<input type="text" id="quantityInput" value="1" />
+						//TODO: handle quantity
+						<a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1"> 
+							<button type="button" class="btn btn-fefault cart">
+								<i class="fa fa-shopping-cart"></i>
+								Add to cart
+							</button>
+						</a>
+
 					</span>
 					@* <p><b>Availability:</b> In Stock</p> *@
 					@* <p><b>Condition:</b>New</p> *@

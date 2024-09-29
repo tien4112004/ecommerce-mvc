@@ -16,6 +16,10 @@
 				<li class="active">Shopping Cart</li>
 			</ol>
 		</div>
+		<div class="cart-actions text-right">
+			<a class="btn btn-default" asp-controller="Product" asp-action="Index">Continue Shopping</a>
+			<a class="btn btn-danger" asp-controller="Cart" asp-action="ClearCart">Clear Cart</a>
+		</div>
 		<div class="table-responsive cart_info">
 			<table class="table table-condensed">
 				<thead>
@@ -53,20 +57,23 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_down btn btn-primary btn-sm" asp-controller="Cart" asp-action="DecreaseQuantity" asp-route-productId="@item.ProductId"> - </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_up btn btn-primary btn-sm" asp-controller="Cart" asp-action="IncreaseQuantity" asp-route-productId="@item.ProductId"> + </a>
+									<a class="cart_quantity_down" asp-controller="Cart" asp-action="DecreaseQuantity" asp-route-productId="@item.ProductId"> - </a>
+									<input class="cart_quantity_input" type="text" name="quantity" value="@item.Quantity" autocomplete="off" size="2">
+									<a class="cart_quantity_up" asp-controller="Cart" asp-action="IncreaseQuantity" asp-route-productId="@item.ProductId"> + </a>
 								</div>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">$@item.TotalPrice</p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-productId="@item.ProductId"><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete btn btn-danger btn-sm" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-productId="@item.ProductId"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 					}
-					<tr aria-colspan="6">Grand Total: @Model.GrandTotal.ToString()</tr>
+					<tr>
+						<td colspan="4" class="text-right"><span class="grand-total">Grand Total: </span></td>
+						<td><span class="grand-total">$@Model.GrandTotal.ToString()</span></td>
+					</tr>
 				}
 				</tbody>
 			</table>

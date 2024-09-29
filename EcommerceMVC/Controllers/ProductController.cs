@@ -15,7 +15,8 @@ namespace EcommerceMVC.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			var products = _context.Products;
+			return View(products);
 		}
 
 		public async Task<IActionResult> Detail(int? productId)

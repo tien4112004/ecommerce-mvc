@@ -10,7 +10,7 @@
 				<img src="images/home/@(Model.Images?.FirstOrDefault() ?? "default.jpg")" alt="@Model.Name" />
 				<h5>@Model.Name</h5>
 				<h4 class="price">$@Model.Price</h4>
-				<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+				<a class="btn btn-default add-to-cart" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 			</div>
 		</a>
 	</div>

@@ -2539,3 +2539,12 @@ h2.title {
 	align-items: center;
 	justify-content: center;
 }
+
+.grand-total {
+  color: #FE980F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 20px;
+  margin-top: 0px;
+}
