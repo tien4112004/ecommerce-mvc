@@ -67,3 +67,7 @@ $RECYCLE.BIN/
 
 # Zip files
 *.zip
+
+# assets file
+media/
+assets/
