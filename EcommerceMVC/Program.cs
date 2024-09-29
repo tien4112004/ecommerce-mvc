@@ -49,6 +49,6 @@ app.MapControllerRoute(
 
 
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<EcommerceDBContext>();
-SeedData.SeedingData(context);
+DatabaseSeeder.SeedingData(context);
 
 app.Run();

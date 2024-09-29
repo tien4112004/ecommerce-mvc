@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceMVC.Repository;
 
-public class SeedData
+public class DatabaseSeeder
 {
     public static void SeedingData(EcommerceDBContext context)
     {

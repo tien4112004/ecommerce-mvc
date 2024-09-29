@@ -27,11 +27,12 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="Areas\Admin\Views\Shared\Components\Brands\Default.cshtml" />
-    <AdditionalFiles Include="Areas\Admin\Views\Shared\Components\Categories\Default.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\ViewComponents\Brands\Default.cshtml" />
+    <AdditionalFiles Include="Areas\Admin\Views\Shared\ViewComponents\Categories\Default.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_NotificationPartial.cshtml" />
