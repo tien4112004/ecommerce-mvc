@@ -1,19 +1,19 @@
-﻿using EcommerceMVC.Data.Data.Repositories;
-using EcommerceMVC.Data.Models;
+﻿using EcommerceMVC.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceMVC.Data.Services;
 
 public class CategoryService : ICategoryService
 {
-    private readonly ICategoryRepository _categoryRepository;
+    private readonly EcommerceDBContext _context;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CategoryService"/> class.
     /// </summary>
-    /// <param name="categoryRepository">The category repository.</param>
-    public CategoryService(ICategoryRepository categoryRepository)
+    /// <param name="context">The database context.</param>
+    public CategoryService(EcommerceDBContext context)
     {
-        _categoryRepository = categoryRepository;
+        _context = context;
     }
 
     /// <summary>
@@ -23,7 +23,7 @@ public class CategoryService : ICategoryService
     /// <returns>The category model, or null if not found.</returns>
     public async Task<CategoryModel?> GetCategoryBySlugAsync(string slug)
     {
-        return await _categoryRepository.GetCategoryBySlugAsync(slug);
+        return await _context.Categories.FirstOrDefaultAsync(c => c.Slug == slug);
     }
 
     /// <summary>
@@ -33,6 +33,6 @@ public class CategoryService : ICategoryService
     /// <returns>A list of product models.</returns>
     public async Task<List<ProductModel>> GetProductsByCategoryIdAsync(int categoryId)
     {
-        return await _categoryRepository.GetProductsByCategoryIdAsync(categoryId);
+        return await _context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
     }
 }
