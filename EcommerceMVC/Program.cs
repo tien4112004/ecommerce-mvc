@@ -1,5 +1,8 @@
-using EcommerceMVC.Repository;
+using EcommerceMVC.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using EcommerceMVC.Data.Data.Repositories;
+using EcommerceMVC.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,10 @@ builder.Services.AddSession(options =>
 	options.Cookie.HttpOnly = true;
 	options.Cookie.IsEssential = true;
 });
+
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<IBrandService, BrandService>();
+
 
 var app = builder.Build();
 

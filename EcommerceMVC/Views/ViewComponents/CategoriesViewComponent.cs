@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace EcommerceMVC.Repository.Components;
+namespace EcommerceMVC.Data.Components;
 
 public class CategoriesViewComponent : ViewComponent
 {

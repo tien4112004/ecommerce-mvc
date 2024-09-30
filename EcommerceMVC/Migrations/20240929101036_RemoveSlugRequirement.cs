@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EcommerceMVC.Migrations
+namespace EcommerceMVC.Data.Migrations
 {
     /// <inheritdoc />
     public partial class RemoveSlugRequirement : Migration

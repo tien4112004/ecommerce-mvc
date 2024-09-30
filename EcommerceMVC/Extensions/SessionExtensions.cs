@@ -1,7 +1,7 @@
 ﻿
 using System.Text.Json;
 
-namespace EcommerceMVC.Repository.Extensions
+namespace EcommerceMVC.Data.Extensions
 {
 	public static class SessionExtensions
 	{

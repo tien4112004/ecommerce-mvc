@@ -1,4 +1,4 @@
-﻿namespace EcommerceMVC.Models
+﻿namespace EcommerceMVC.Data.Models
 {
 	public class CartItemModel
 	{

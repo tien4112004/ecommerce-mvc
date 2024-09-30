@@ -1,9 +1,9 @@
-﻿using EcommerceMVC.Models;
-using EcommerceMVC.Repository;
+﻿using EcommerceMVC.Data.Models;
+using EcommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace EcommerceMVC.Controllers
+namespace EcommerceMVC.Data.Controllers
 {
 
 	public class CategoryController : Controller

@@ -1,10 +1,10 @@
-﻿using EcommerceMVC.Models;
+﻿using EcommerceMVC.Data.Models;
+using EcommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;
-using EcommerceMVC.Repository;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace EcommerceMVC.Area.Admin.Controllers;
+namespace EcommerceMVC.Data.Area.Admin.Controllers;
 
 [Area("Admin")]
 public class ProductController : Controller

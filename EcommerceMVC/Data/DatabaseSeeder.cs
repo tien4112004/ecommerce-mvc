@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Net.Mime;
-using EcommerceMVC.Models;
+using EcommerceMVC.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EcommerceMVC.Repository;
+namespace EcommerceMVC.Data;
 
 public class DatabaseSeeder
 {

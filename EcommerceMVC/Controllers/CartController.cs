@@ -1,11 +1,11 @@
 ﻿using System.Net;
-using EcommerceMVC.Models;
-using EcommerceMVC.Repository;
-using EcommerceMVC.Repository.Extensions;
-using EcommerceMVC.Views.ViewModels;
+using EcommerceMVC.Data.Models;
+using EcommerceMVC.Data;
+using EcommerceMVC.Data.Views.ViewModels;
+using EcommerceMVC.Data.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EcommerceMVC.Controllers
+namespace EcommerceMVC.Data.Controllers
 {
 	public class CartController : Controller
 	{

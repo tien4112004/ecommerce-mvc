@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using EcommerceMVC.Repository.Validations;
+using EcommerceMVC.Data.Validations;
 
-namespace EcommerceMVC.Models
+namespace EcommerceMVC.Data.Models
 {
 	public class ProductModel
 	{

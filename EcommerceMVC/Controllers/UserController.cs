@@ -1,4 +1,4 @@
-﻿namespace EcommerceMVC.Controllers
+﻿namespace EcommerceMVC.Data.Controllers
 {
 	public class UserController
 	{

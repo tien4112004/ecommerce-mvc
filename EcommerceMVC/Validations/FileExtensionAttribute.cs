@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EcommerceMVC.Repository.Validations;
+namespace EcommerceMVC.Data.Validations;
 
 public class FileExtensionAttribute : ValidationAttribute
 {

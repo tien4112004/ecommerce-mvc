@@ -1,8 +1,8 @@
-﻿using EcommerceMVC.Repository;
+﻿using EcommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace EcommerceMVC.Controllers
+namespace EcommerceMVC.Data.Controllers
 {
 	public class ProductController : Controller
 	{
