@@ -7,7 +7,9 @@
 	<div class="single-products">
 		<a asp-controller="Product" asp-action="Detail" asp-route-productId="@Model.Id">
 			<div class="productinfo text-center">
-				<img src="images/home/@(Model.Image ?? "default.jpg")" alt="@Model.Name" />
+				<div class="item-img productinfo">
+					<img src="~/media/products/@Model.Image" alt="@Model.Name" class="center-block" />
+				</div>
 				<h5>@Model.Name</h5>
 				<h4 class="price">$@Model.Price</h4>
 				<a class="btn btn-default add-to-cart" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id"><i class="fa fa-shopping-cart"></i>Add to cart</a>
