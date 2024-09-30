@@ -1,5 +1,4 @@
 ﻿using EcommerceMVC.Data.Models;
-using EcommerceMVC.Data.Data.Repositories;
 using EcommerceMVC.Data.Services;
 using EcommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;

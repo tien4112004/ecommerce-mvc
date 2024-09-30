@@ -1,7 +1,6 @@
 using EcommerceMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using EcommerceMVC.Data.Data.Repositories;
 using EcommerceMVC.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,11 +10,8 @@ builder.Services.AddDbContext<EcommerceDBContext>(options =>
 	options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultDbConnection"]);
 });
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddDistributedMemoryCache();
-
 builder.Services.AddSession(options =>
 {
 	options.IdleTimeout = TimeSpan.FromMinutes(10);
@@ -23,10 +19,9 @@ builder.Services.AddSession(options =>
 	options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<IBrandService, BrandService>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IAdminProductService, EcommerceMVC.Areas.Admin.Services.AdminProductService>();
 
 var app = builder.Build();
 
@@ -49,7 +44,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "Areas",
-	pattern: "{area:exists}/{controller=Product}/{action=Index}/{id?}");
+	pattern: "{area:exists}/{controller=AdminProduct}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
 	name: "default",
