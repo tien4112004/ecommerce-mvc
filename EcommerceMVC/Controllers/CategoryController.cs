@@ -1,5 +1,6 @@
 ﻿using EcommerceMVC.Data.Models;
 using EcommerceMVC.Data;
+using EcommerceMVC.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,22 +9,21 @@ namespace EcommerceMVC.Data.Controllers
 
 	public class CategoryController : Controller
 	{
-		private readonly EcommerceDBContext _context;
-
-		public CategoryController(EcommerceDBContext context)
+		private readonly ICategoryService _categoryService;
+		
+		public CategoryController(ICategoryService categoryService)
 		{
-			_context = context;
+			_categoryService = categoryService;
 		}
 
 		public async Task<IActionResult> Index(string slug = "")
 		{
-			CategoryModel? category = await _context.Categories.FirstOrDefaultAsync(category => category.Slug == slug);
+			var category = await _categoryService.GetCategoryBySlugAsync(slug);
 			if (category == null)
 			{
-				return RedirectToAction("Index");
+				return NotFound();
 			}
-
-			var products = await _context.Products.Where(product => product.CategoryId == category.Id).ToListAsync();
+			var products = await _categoryService.GetProductsByCategoryIdAsync(category.Id);
 			return View(products);
 		}
 	}

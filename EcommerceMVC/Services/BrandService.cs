@@ -10,12 +10,9 @@ namespace EcommerceMVC.Data.Services
     public class BrandService : IBrandService
     {
         private readonly IBrandRepository _brandRepository;
-        private readonly EcommerceDBContext _context;
-
         public BrandService(IBrandRepository brandRepository, EcommerceDBContext context)
         {
             _brandRepository = brandRepository;
-            _context = context;
         }
 
         public async Task<BrandModel?> GetBrandBySlugAsync(string slug)
@@ -25,7 +22,7 @@ namespace EcommerceMVC.Data.Services
 
         public async Task<List<ProductModel>> GetProductsByBrandIdAsync(int brandId)
         {
-            return await _context.Products.Where(product => product.BrandId == brandId).ToListAsync();
+            return await _brandRepository.GetProductsByBrandIdAsync(brandId);
         }
     }
 }

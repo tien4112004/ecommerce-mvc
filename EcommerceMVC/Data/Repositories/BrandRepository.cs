@@ -17,4 +17,9 @@ public class BrandRepository : IBrandRepository
     {
         return await _context.Brands.FirstOrDefaultAsync(brand => brand.Slug == slug);
     }
+    
+    public async Task<List<ProductModel>> GetProductsByBrandIdAsync(int brandId)
+    {
+        return await _context.Products.Where(product => product.BrandId == brandId).ToListAsync();
+    }
 }
