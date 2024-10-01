@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace EcommerceMVC.Areas.Admin.Services;
 
-public class AdminProductService : IAdminProductService
+public class ProductService : IAdminProductService
 {
     private readonly EcommerceDBContext _context;
     private readonly IWebHostEnvironment _hostEnvironment;
 
-    public AdminProductService(EcommerceDBContext context, IWebHostEnvironment hostEnvironment)
+    public ProductService(EcommerceDBContext context, IWebHostEnvironment hostEnvironment)
     {
         _context = context;
         _hostEnvironment = hostEnvironment;
@@ -33,6 +33,14 @@ public class AdminProductService : IAdminProductService
         return await _context.Products.FindAsync(productId);
     }
 
+    public async Task<List<ProductModel>> GetProductsByCategoryIdAsync(int categoryId)
+    {
+        return await _context.Products.Where(p => p.CategoryId == categoryId)
+                                      .Include(p => p.Category)
+                                      .Include(p => p.Brand)
+                                      .ToListAsync();
+    }
+    
     public async Task<bool> CreateProductAsync(ProductModel product)
     {
         product.Slug = product.Name.Replace(" ", "-");

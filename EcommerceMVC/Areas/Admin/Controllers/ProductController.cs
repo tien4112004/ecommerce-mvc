@@ -9,10 +9,10 @@ namespace EcommerceMVC.Areas.Admin.Controllers;
 [Area("Admin")]
 public class AdminProductController : Controller
 {
-    private readonly IAdminProductService _productService;
+    private readonly IProductService _productService;
     private readonly EcommerceDBContext _context;
 
-    public AdminProductController(IAdminProductService productService, EcommerceDBContext context)
+    public AdminProductController(IProductService productService, EcommerceDBContext context)
     {
         _productService = productService;
         _context = context;
