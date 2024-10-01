@@ -8,9 +8,8 @@ namespace EcommerceMVC.Data.Models
 		public int Id { get; set; }
 		[Required(ErrorMessage = "Required")]
 		public string Name { get; set; }
-		[Required(ErrorMessage = "Required")]
+		[Required(ErrorMessage = "Description is required")]
 		public string Description { get; set; }
-		[Required]
 		public string Slug { get; set; }
 		public int Status { get; set; }
 	}
