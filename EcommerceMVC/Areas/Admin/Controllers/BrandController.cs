@@ -2,59 +2,52 @@
 using EcommerceMVC.Data;
 using EcommerceMVC.Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace EcommerceMVC.Areas.Admin.Controllers;
 
 [Area("Admin")]
-public class ProductController : Controller
-{
+public class BrandController : Controller {
     private readonly IProductService _productService;
-    private readonly ICategoryService _categoryService;
+    private readonly IBrandService _brandService;
     private readonly EcommerceDBContext _context;
 
-    public ProductController(IProductService productService, ICategoryService categoryService, EcommerceDBContext context)
+    public BrandController(IProductService productService, IBrandService brandService, EcommerceDBContext context)
     {
         _productService = productService;
-        _categoryService = categoryService;
+        _brandService = brandService;
         _context = context;
     }
 
     public async Task<IActionResult> Index()
     {
-        var products = await _productService.GetAllProductsAsync();
-        return View(products);
+        var categories = await _brandService.GetAllBrandsAsync();
+        return View(categories);
     }
 
     [HttpGet]
     public IActionResult Create()
     {
-        ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
-        ViewBag.Brand = new SelectList(_context.Brands, "Id", "Name");
         return View();
     }
-
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(ProductModel product)
+    public async Task<IActionResult> Create(BrandModel brand)
     {
-        ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
-        ViewBag.Brand = new SelectList(_context.Brands, "Id", "Name", product.BrandId);
-
         if (ModelState.IsValid)
         {
             try
             {
-                await _productService.CreateProductAsync(product);
-                TempData["Success"] = "Product added successfully.";
+                await _brandService.CreateBrandAsync(brand);
+                TempData["Success"] = "Brand added successfully.";
                 return RedirectToAction("Index");
             }
             catch (InvalidOperationException)
             {
-                TempData["Error"] = "A product with this slug already exists.";
-                ModelState.AddModelError("Slug", "A product with this slug already exists.");
+                TempData["Error"] = "A brand with this slug already exists.";
+                ModelState.AddModelError("Slug", "A brand with this slug already exists.");
             }
-
         }
         else
         {
@@ -72,36 +65,30 @@ public class ProductController : Controller
             // return BadRequest(errorMessage);
         }
 
-        return View(product);
+        return View(brand);
     }
-
+    
     [HttpGet]
-    public async Task<IActionResult> Edit(int productId)
+    public async Task<IActionResult> Edit(int brandId)
     {
-        ViewBag.Categories = new SelectList(await _categoryService.GetAllCategoriesAsync(), "Id", "Name");
-        ViewBag.Brand = new SelectList(_context.Brands, "Id", "Name");
-
-        var product = await _productService.GetProductByIdAsync(productId);
-        if (product == null)
+        var brand = await _brandService.GetBrandByIdAsync(brandId);
+        if (brand == null)
         {
             return NotFound();
         }
-        return View(product);
+        return View(brand);
     }
-
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int productId, ProductModel product)
+    public async Task<IActionResult> Edit(int brandId, BrandModel brand)
     {
-        ViewBag.Categories = new SelectList(await _categoryService.GetAllCategoriesAsync(), "Id", "Name", product.CategoryId);
-        ViewBag.Brand = new SelectList(_context.Brands, "Id", "Name", product.BrandId);
-
         if (ModelState.IsValid)
         {
             try
             {
-                await _productService.UpdateProductAsync(productId, product);
-                TempData["Success"] = "Product information updated successfully.";
+                await _brandService.UpdateBrandAsync(brandId, brand);
+                TempData["Success"] = "Brand information updated successfully.";
                 return RedirectToAction("Index");
             }
             catch (InvalidOperationException ex)
@@ -126,15 +113,15 @@ public class ProductController : Controller
             // return BadRequest(errorMessage);
         }
 
-        return View(product);
+        return View(brand);
     }
 
-    public async Task<IActionResult> Delete(int productId)
+    public async Task<IActionResult> Delete(int brandId)
     {
         try
         {
-            await _productService.DeleteProductAsync(productId);
-            TempData["Success"] = "Product deleted successfully.";
+            await _brandService.DeleteBrandAsync(brandId);
+            TempData["Success"] = "Brand deleted successfully.";
             return RedirectToAction("Index");
         }
         catch (InvalidOperationException ex)

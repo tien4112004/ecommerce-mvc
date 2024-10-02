@@ -1,0 +1,60 @@
+﻿@model EcommerceMVC.Data.Models.CategoryModel
+
+@{
+    ViewData["Title"] = "Edit category";
+}
+
+<h2 class="pageheader-title">Categories</h2>
+<!-- basic form  -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="section-block" id="basicform">
+            <h3 class="section-title">Edit category</h3>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Category information</h5>
+            <div class="card-body">
+                <form asp-action="Edit" asp-route-categoryId="@Model.Id" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="col-form-label">Id</label>
+                        <input asp-for="Id" class="form-control" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control editor1" id="editor1"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Status</label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="d-flex">
+                        <button class="btn btn-primary mr-2">Update</button>
+                        <a asp-controller="Category" asp-action="Index" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end basic form  -->
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
+}

@@ -21,9 +21,9 @@ namespace EcommerceMVC.Data.Models
 		[FileExtension]
 		public IFormFile ImageUpload { get; set; }
 		
-		[Required(ErrorMessage = "Brand has to be selected")]
+		[Required, Range(1, int.MaxValue, ErrorMessage = "Brand has to be selected")]
 		public int BrandId { get; set; }
-		[Required(ErrorMessage = "Category has to be selected")]
+		[Required, Range(1, int.MaxValue,ErrorMessage = "Category has to be selected")]
 		public int CategoryId { get; set; }
 		
 

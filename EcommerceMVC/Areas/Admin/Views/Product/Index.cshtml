@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
-            <a asp-controller="AdminProduct" asp-action="Create" class="btn btn-info">New product</a>
+            <a asp-controller="Product" asp-action="Create" class="btn btn-info">New product</a>
             <h5 class="card-header">Products</h5>
             <div class="card-body">
                 <div class="table-responsive">
@@ -41,10 +41,10 @@
                                     <td>@product.Category.Name</td>
                                     <td>@product.Brand.Name</td>
                                     <td>
-                                        <a asp-controller="AdminProduct" asp-action="Edit" asp-route-productId="@product.Id"
+                                        <a asp-controller="Product" asp-action="Edit" asp-route-productId="@product.Id"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <a asp-controller="AdminProduct" asp-action="Delete"
-                                            asp-route-productId="@product.Id" class="btn btn-danger btn-sm">Delete</a>
+                                        <a asp-controller="Product" asp-action="Delete"
+                                            asp-route-productId="@product.Id" class="btn btn-danger btn-sm confirmDeletion">Delete</a>
                                     </td>
                                 </tr>
                             }

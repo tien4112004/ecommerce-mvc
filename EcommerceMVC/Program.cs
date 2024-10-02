@@ -21,7 +21,9 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IAdminProductService, EcommerceMVC.Areas.Admin.Services.AdminProductService>();
+builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IProductService, EcommerceMVC.Areas.Admin.Services.ProductService>();
+builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.ICategoryService, EcommerceMVC.Areas.Admin.Services.CategoryService>();
+builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IBrandService, EcommerceMVC.Areas.Admin.Services.BrandService>();
 
 var app = builder.Build();
 
@@ -44,7 +46,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "Areas",
-	pattern: "{area:exists}/{controller=AdminProduct}/{action=Index}/{id?}");
+	pattern: "{area:exists}/{controller=Product}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
 	name: "default",
