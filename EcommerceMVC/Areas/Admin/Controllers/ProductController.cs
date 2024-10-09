@@ -1,12 +1,15 @@
 ﻿using EcommerceMVC.Areas.Admin.Services;
 using EcommerceMVC.Data;
 using EcommerceMVC.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EcommerceMVC.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize]
+[Authorize(Roles = UserRoles.Administrator)]
 public class ProductController : Controller
 {
     private readonly IProductService _productService;

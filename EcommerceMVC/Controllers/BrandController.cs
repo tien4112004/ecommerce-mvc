@@ -9,6 +9,7 @@ namespace EcommerceMVC.Data.Controllers;
 /// <summary>
 /// Controller for handling brand-related actions.
 /// </summary>
+[Route("brand")]
 public class BrandController : Controller
 {
 	private readonly IBrandService _brandService;
@@ -27,6 +28,7 @@ public class BrandController : Controller
 	/// </summary>
 	/// <param name="slug">The brand slug.</param>
 	/// <returns>The brand view with its products.</returns>
+	[Route("{slug}")]
 	public async Task<IActionResult> Index(string slug = "")
 	{
 		BrandModel? brand = await _brandService.GetBrandBySlugAsync(slug);

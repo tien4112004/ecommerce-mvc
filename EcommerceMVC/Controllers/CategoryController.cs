@@ -9,6 +9,7 @@ namespace EcommerceMVC.Data.Controllers;
 /// <summary>
 /// Controller for handling category-related actions.
 /// </summary>
+[Route("category")]
 public class CategoryController : Controller
 {
     private readonly ICategoryService _categoryService;
@@ -27,6 +28,7 @@ public class CategoryController : Controller
     /// </summary>
     /// <param name="slug">The category slug.</param>
     /// <returns>The category view with its products.</returns>
+    [Route("{slug}")]
     public async Task<IActionResult> Index(string slug = "")
     {
         var category = await _categoryService.GetCategoryBySlugAsync(slug);

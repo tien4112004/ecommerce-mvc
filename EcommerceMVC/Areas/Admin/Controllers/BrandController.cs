@@ -1,12 +1,15 @@
 ﻿using EcommerceMVC.Areas.Admin.Services;
 using EcommerceMVC.Data;
 using EcommerceMVC.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace EcommerceMVC.Areas.Admin.Controllers;
 
 [Area("Admin")]
+// [Authorize]
+[Authorize(Roles = UserRoles.Administrator)]
 public class BrandController : Controller {
     private readonly IProductService _productService;
     private readonly IBrandService _brandService;
