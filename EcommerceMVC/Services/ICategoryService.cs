@@ -9,7 +9,7 @@ public interface ICategoryService
     /// </summary>
     /// <param name="slug">The category slug.</param>
     /// <returns>The category model, or null if not found.</returns>
-    Task<CategoryModel?> GetCategoryBySlugAsync(string slug);
+    Task<Category?> GetCategoryBySlugAsync(string slug);
 
     /// <summary>
     /// Gets products by category ID.

@@ -13,22 +13,22 @@ public class BrandService : IBrandService
         _context = context;
     }
     
-    public async Task<BrandModel?> GetBrandBySlugAsync(string slug)
+    public async Task<Brand?> GetBrandBySlugAsync(string slug)
     {
         return await _context.Brands.FirstOrDefaultAsync(c => c.Slug == slug);
     }
     
-    public async Task<BrandModel?> GetBrandByIdAsync(int brandId)
+    public async Task<Brand?> GetBrandByIdAsync(int brandId)
     {
         return await _context.Brands.FirstOrDefaultAsync(c => c.Id == brandId);
     }
         
-    public async Task<List<BrandModel>> GetAllBrandsAsync()
+    public async Task<List<Brand>> GetAllBrandsAsync()
     {
         return await _context.Brands.ToListAsync();
     }
         
-    public async Task CreateBrandAsync(BrandModel brand)
+    public async Task CreateBrandAsync(Brand brand)
     {
         brand.Slug = brand.Name.Replace(" ", "-");
         var slug = await _context.Brands.FirstOrDefaultAsync(c => c.Slug == brand.Slug);
@@ -41,7 +41,7 @@ public class BrandService : IBrandService
         await _context.SaveChangesAsync();
     }
     
-    public async Task UpdateBrandAsync(int brandId, BrandModel brand)
+    public async Task UpdateBrandAsync(int brandId, Brand brand)
     {
         var existingBrand = await _context.Brands.FindAsync(brandId);
         if (existingBrand == null)

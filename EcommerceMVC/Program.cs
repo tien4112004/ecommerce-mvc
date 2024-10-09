@@ -21,7 +21,7 @@ builder.Services.AddSession(options =>
 	options.Cookie.HttpOnly = true;
 	options.Cookie.IsEssential = true;
 });
-builder.Services.AddIdentity<UserModel, IdentityRole>()
+builder.Services.AddIdentity<User, IdentityRole>()
 	.AddEntityFrameworkStores<EcommerceDBContext>().AddDefaultTokenProviders();
 builder.Services.AddAuthorization(options =>
 {

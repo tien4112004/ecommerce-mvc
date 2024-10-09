@@ -19,7 +19,7 @@ namespace EcommerceMVC.Data.Controllers
 
 		public IActionResult Index()
 		{
-			var cart = HttpContext.Session.Get<List<CartItemModel>>(CART_KEY) ?? new List<CartItemModel>();
+			var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY) ?? new List<CartItem>();
 
 			CartItemViewModel cartVM = new()
 			{
@@ -43,12 +43,12 @@ namespace EcommerceMVC.Data.Controllers
 				return Redirect("/404");
 			}
 
-			var cart = HttpContext.Session.Get<List<CartItemModel>>(CART_KEY) ?? new List<CartItemModel>();
+			var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY) ?? new List<CartItem>();
 
 			var cartItem = cart.FirstOrDefault(item => item.ProductId == productId);
 			if (cartItem == null)
 			{
-				cart.Add(new CartItemModel
+				cart.Add(new CartItem
 				{
 					ProductId = productId,
 					ProductName = product.Name,
@@ -68,7 +68,7 @@ namespace EcommerceMVC.Data.Controllers
 		
 		public IActionResult DecreaseQuantity(int productId)
 		{
-			var cart = HttpContext.Session.Get<List<CartItemModel>>(CART_KEY);
+			var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY);
 			var cartItem = cart.FirstOrDefault(item => item.ProductId == productId);
 			cartItem.Quantity -= 1;
 
@@ -84,7 +84,7 @@ namespace EcommerceMVC.Data.Controllers
 
 		public IActionResult IncreaseQuantity(int productId)
 		{
-			var cart = HttpContext.Session.Get<List<CartItemModel>>(CART_KEY);
+			var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY);
 			var cartItem = cart.FirstOrDefault(item => item.ProductId == productId);
 			cartItem.Quantity += 1;
 			
@@ -95,7 +95,7 @@ namespace EcommerceMVC.Data.Controllers
 
 		public IActionResult RemoveFromCart(int productId)
 		{
-			var cart = HttpContext.Session.Get<List<CartItemModel>>(CART_KEY);
+			var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY);
 			var cartItem = cart.FirstOrDefault(item => item.ProductId == productId);
 			cart.Remove(cartItem);
 

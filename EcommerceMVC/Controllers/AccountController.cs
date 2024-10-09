@@ -7,10 +7,10 @@ namespace EcommerceMVC.Controllers
 {
 	public class AccountController : Controller
 	{
-		private readonly UserManager<UserModel> _userManager;
-		private readonly SignInManager<UserModel> _signInManager;
+		private readonly UserManager<User> _userManager;
+		private readonly SignInManager<User> _signInManager;
 
-		public AccountController(UserManager<UserModel> userManager, SignInManager<UserModel> signInManager)
+		public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
@@ -37,7 +37,7 @@ namespace EcommerceMVC.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = new UserModel { UserName = model.UserName, Email = model.Email };
+				var user = new User { UserName = model.UserName, Email = model.Email };
 				var result = await _userManager.CreateAsync(user, model.Password);
 
 				if (result.Succeeded)

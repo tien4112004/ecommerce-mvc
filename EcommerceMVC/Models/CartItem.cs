@@ -1,6 +1,6 @@
 ﻿namespace EcommerceMVC.Data.Models
 {
-	public class CartItemModel
+	public class CartItem
 	{
 		public int ProductId { get; set; }
 		public string ProductName { get; set; }
@@ -10,12 +10,12 @@
 		public string Image { get; set; }
 
 
-		public CartItemModel()
+		public CartItem()
 		{
 
 		}
 
-		public CartItemModel(ProductModel product, int quantity = 1)
+		public CartItem(ProductModel product, int quantity = 1)
 		{
 			ProductId = product.Id;
 			ProductName = product.Name;

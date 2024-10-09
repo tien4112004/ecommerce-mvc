@@ -130,12 +130,12 @@ public class ProductService : IProductService
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<CategoryModel>> GetCategoriesAsync()
+    public async Task<List<Category>> GetCategoriesAsync()
     {
         return await _context.Categories.ToListAsync();
     }
 
-    public async Task<List<BrandModel>> GetBrandsAsync()
+    public async Task<List<Brand>> GetBrandsAsync()
     {
         return await _context.Brands.ToListAsync();
     }

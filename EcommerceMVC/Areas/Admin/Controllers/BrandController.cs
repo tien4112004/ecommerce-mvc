@@ -36,7 +36,7 @@ public class BrandController : Controller {
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(BrandModel brand)
+    public async Task<IActionResult> Create(Brand brand)
     {
         if (ModelState.IsValid)
         {
@@ -84,7 +84,7 @@ public class BrandController : Controller {
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int brandId, BrandModel brand)
+    public async Task<IActionResult> Edit(int brandId, Brand brand)
     {
         if (ModelState.IsValid)
         {

@@ -23,7 +23,7 @@ public class BrandService : IBrandService
     /// </summary>
     /// <param name="slug">The brand slug.</param>
     /// <returns>The brand model, or null if not found.</returns>
-    public async Task<BrandModel?> GetBrandBySlugAsync(string slug)
+    public async Task<Brand?> GetBrandBySlugAsync(string slug)
     {
         return await _context.Brands.FirstOrDefaultAsync(b => b.Slug == slug);
     }

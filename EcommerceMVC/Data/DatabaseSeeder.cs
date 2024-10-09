@@ -12,7 +12,7 @@ public class DatabaseSeeder
         context.Database.Migrate();
         if (!context.Products.Any())
         {
-            CategoryModel laptop = new CategoryModel
+            Category laptop = new Category
             {
                 Name = "Laptop",
                 Slug = "laptop",
@@ -20,7 +20,7 @@ public class DatabaseSeeder
                 Status = 1,
             };
 
-            CategoryModel phone = new CategoryModel
+            Category phone = new Category
             {
                 Name = "Phone",
                 Slug = "phone",
@@ -28,7 +28,7 @@ public class DatabaseSeeder
                 Status = 1,
             };
 
-            BrandModel apple = new BrandModel
+            Brand apple = new Brand
             {
                 Name = "Apple",
                 Slug = "apple",
@@ -36,7 +36,7 @@ public class DatabaseSeeder
                 Status = 1,
             };
 
-            BrandModel samsung = new BrandModel
+            Brand samsung = new Brand
             {
                 Name = "Samsung",
                 Slug = "samsung",

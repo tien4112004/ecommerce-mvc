@@ -13,22 +13,22 @@ public class CategoryService : ICategoryService
         _context = context;
     }
     
-    public async Task<CategoryModel?> GetCategoryBySlugAsync(string slug)
+    public async Task<Category?> GetCategoryBySlugAsync(string slug)
     {
         return await _context.Categories.FirstOrDefaultAsync(c => c.Slug == slug);
     }
     
-    public async Task<CategoryModel?> GetCategoryByIdAsync(int categoryId)
+    public async Task<Category?> GetCategoryByIdAsync(int categoryId)
     {
         return await _context.Categories.FirstOrDefaultAsync(c => c.Id == categoryId);
     }
         
-    public async Task<List<CategoryModel>> GetAllCategoriesAsync()
+    public async Task<List<Category>> GetAllCategoriesAsync()
     {
         return await _context.Categories.ToListAsync();
     }
         
-    public async Task CreateCategoryAsync(CategoryModel category)
+    public async Task CreateCategoryAsync(Category category)
     {
         category.Slug = category.Name.Replace(" ", "-");
         var slug = await _context.Categories.FirstOrDefaultAsync(c => c.Slug == category.Slug);
@@ -41,7 +41,7 @@ public class CategoryService : ICategoryService
         await _context.SaveChangesAsync();
     }
     
-    public async Task UpdateCategoryAsync(int categoryId, CategoryModel category)
+    public async Task UpdateCategoryAsync(int categoryId, Category category)
     {
         var existingCategory = await _context.Categories.FindAsync(categoryId);
         if (existingCategory == null)

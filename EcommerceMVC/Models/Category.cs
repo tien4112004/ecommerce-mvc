@@ -1,18 +1,16 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EcommerceMVC.Data.Models
 {
-	public class BrandModel
+	public class Category
 	{
 		[Key]
 		public int Id { get; set; }
 		[Required(ErrorMessage = "Required")]
 		public string Name { get; set; }
-		[Required(ErrorMessage = "Required")]
+		[Required(ErrorMessage = "Description is required")]
 		public string Description { get; set; }
 		public string Slug { get; set; }
 		public int Status { get; set; }
-		public string? Image { get; set; }
 	}
 }

@@ -31,7 +31,7 @@ public class BrandController : Controller
 	[Route("{slug}")]
 	public async Task<IActionResult> Index(string slug = "")
 	{
-		BrandModel? brand = await _brandService.GetBrandBySlugAsync(slug);
+		Brand? brand = await _brandService.GetBrandBySlugAsync(slug);
 		if (brand == null)
 		{
 			return RedirectToAction("Index");

@@ -70,12 +70,12 @@
 								@if (User.Identity?.IsAuthenticated ?? false)
 								{
 									<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-									<li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-lock"></i> Logout</a></li>
 									@if (User.IsInRole("Administrator"))
 									{
 										<li><a asp-area="Admin" asp-controller="Product"><i class="fa fa-crosshairs"></i> Admin CRM</a></li>
 									}
 									<li><a asp-controller="Account" asp-action="Index"><i class="fa fa-user"></i> Account</a></li>
+									<li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-lock"></i> Logout</a></li>
 								}
 								else
 								{

@@ -36,7 +36,7 @@ public class CategoryController : Controller {
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(CategoryModel category)
+    public async Task<IActionResult> Create(Category category)
     {
         if (ModelState.IsValid)
         {
@@ -84,7 +84,7 @@ public class CategoryController : Controller {
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int categoryId, CategoryModel category)
+    public async Task<IActionResult> Edit(int categoryId, Category category)
     {
         if (ModelState.IsValid)
         {

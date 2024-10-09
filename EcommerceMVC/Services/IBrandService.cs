@@ -9,7 +9,7 @@ public interface IBrandService
     /// </summary>
     /// <param name="slug">The brand slug.</param>
     /// <returns>The brand model, or null if not found.</returns>
-    Task<BrandModel?> GetBrandBySlugAsync(string slug);
+    Task<Brand?> GetBrandBySlugAsync(string slug);
 
     /// <summary>
     /// Gets products by brand ID.

@@ -5,10 +5,10 @@ namespace EcommerceMVC.Areas.Admin.Services;
 
 public interface ICategoryService
 {
-    public Task<CategoryModel?> GetCategoryBySlugAsync(string slug);
-    public Task<CategoryModel?> GetCategoryByIdAsync(int categoryId);
-    public Task<List<CategoryModel>> GetAllCategoriesAsync();
-    public Task CreateCategoryAsync(CategoryModel category);
-    public Task UpdateCategoryAsync(int categoryId, CategoryModel category);
+    public Task<Category?> GetCategoryBySlugAsync(string slug);
+    public Task<Category?> GetCategoryByIdAsync(int categoryId);
+    public Task<List<Category>> GetAllCategoriesAsync();
+    public Task CreateCategoryAsync(Category category);
+    public Task UpdateCategoryAsync(int categoryId, Category category);
     public Task DeleteCategoryAsync(int categoryId);
 }

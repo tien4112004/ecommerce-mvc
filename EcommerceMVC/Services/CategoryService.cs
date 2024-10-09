@@ -21,7 +21,7 @@ public class CategoryService : ICategoryService
     /// </summary>
     /// <param name="slug">The category slug.</param>
     /// <returns>The category model, or null if not found.</returns>
-    public async Task<CategoryModel?> GetCategoryBySlugAsync(string slug)
+    public async Task<Category?> GetCategoryBySlugAsync(string slug)
     {
         return await _context.Categories.FirstOrDefaultAsync(c => c.Slug == slug);
     }
