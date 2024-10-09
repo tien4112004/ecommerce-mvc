@@ -4,7 +4,7 @@ using EcommerceMVC.Data.Validations;
 
 namespace EcommerceMVC.Data.Models
 {
-	public class ProductModel
+	public class Product
 	{
 		[Key]
 		public int Id { get; set; }

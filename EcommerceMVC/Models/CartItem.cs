@@ -15,7 +15,7 @@
 
 		}
 
-		public CartItem(ProductModel product, int quantity = 1)
+		public CartItem(Product product, int quantity = 1)
 		{
 			ProductId = product.Id;
 			ProductName = product.Name;

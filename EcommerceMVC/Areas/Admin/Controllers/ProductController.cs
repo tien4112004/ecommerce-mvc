@@ -39,7 +39,7 @@ public class ProductController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(ProductModel product)
+    public async Task<IActionResult> Create(Product product)
     {
         ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
         ViewBag.Brand = new SelectList(_context.Brands, "Id", "Name", product.BrandId);
@@ -94,7 +94,7 @@ public class ProductController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int productId, ProductModel product)
+    public async Task<IActionResult> Edit(int productId, Product product)
     {
         ViewBag.Categories = new SelectList(await _categoryService.GetAllCategoriesAsync(), "Id", "Name", product.CategoryId);
         ViewBag.Brand = new SelectList(_context.Brands, "Id", "Name", product.BrandId);

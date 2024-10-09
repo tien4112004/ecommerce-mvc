@@ -16,5 +16,5 @@ public interface IBrandService
     /// </summary>
     /// <param name="brandId">The brand ID.</param>
     /// <returns>A list of product models.</returns>
-    Task<List<ProductModel>> GetProductsByBrandIdAsync(int brandId);
+    Task<List<Product>> GetProductsByBrandIdAsync(int brandId);
 }

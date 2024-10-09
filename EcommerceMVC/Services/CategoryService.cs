@@ -31,7 +31,7 @@ public class CategoryService : ICategoryService
     /// </summary>
     /// <param name="categoryId">The category ID.</param>
     /// <returns>A list of product models.</returns>
-    public async Task<List<ProductModel>> GetProductsByCategoryIdAsync(int categoryId)
+    public async Task<List<Product>> GetProductsByCategoryIdAsync(int categoryId)
     {
         return await _context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
     }

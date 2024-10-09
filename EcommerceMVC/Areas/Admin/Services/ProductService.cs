@@ -20,7 +20,7 @@ public class ProductService : IProductService
         _hostEnvironment = hostEnvironment;
     }
 
-    public async Task<List<ProductModel>> GetAllProductsAsync()
+    public async Task<List<Product>> GetAllProductsAsync()
     {
         return await _context.Products.OrderByDescending(product => product.Id)
                                       .Include(product => product.Category)
@@ -28,12 +28,12 @@ public class ProductService : IProductService
                                       .ToListAsync();
     }
 
-    public async Task<ProductModel?> GetProductByIdAsync(int productId)
+    public async Task<Product?> GetProductByIdAsync(int productId)
     {
         return await _context.Products.FindAsync(productId);
     }
 
-    public async Task<List<ProductModel>> GetProductsByCategoryIdAsync(int categoryId)
+    public async Task<List<Product>> GetProductsByCategoryIdAsync(int categoryId)
     {
         return await _context.Products.Where(p => p.CategoryId == categoryId)
                                       .Include(p => p.Category)
@@ -41,7 +41,7 @@ public class ProductService : IProductService
                                       .ToListAsync();
     }
 
-    public async Task CreateProductAsync(ProductModel product)
+    public async Task CreateProductAsync(Product product)
     {
         product.Slug = product.Name.Replace(" ", "-");
         var slug = await _context.Products.FirstOrDefaultAsync(p => p.Slug == product.Slug);
@@ -64,7 +64,7 @@ public class ProductService : IProductService
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateProductAsync(int productId, ProductModel product)
+    public async Task UpdateProductAsync(int productId, Product product)
     {
         var existedProduct = await _context.Products.FirstOrDefaultAsync(p => p.Id == productId);
         if (existedProduct == null)

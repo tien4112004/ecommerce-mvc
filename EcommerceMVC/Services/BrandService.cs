@@ -33,7 +33,7 @@ public class BrandService : IBrandService
     /// </summary>
     /// <param name="brandId">The brand ID.</param>
     /// <returns>A list of product models.</returns>
-    public async Task<List<ProductModel>> GetProductsByBrandIdAsync(int brandId)
+    public async Task<List<Product>> GetProductsByBrandIdAsync(int brandId)
     {
         return await _context.Products.Where(p => p.BrandId == brandId).ToListAsync();
     }

@@ -45,17 +45,17 @@ public class DatabaseSeeder
             };
 
             context.Products.AddRange(
-                new ProductModel
+                new Product
                 {
                     Name = "Macbook Air", Slug = "macbook-air", Description = "This is a sample product.", Category = laptop,
                     Brand = apple, Price = 1199
                 },
-                new ProductModel
+                new Product
                 {
                     Name = "iPhone 13", Slug = "iPhone-13", Description = "This is a sample product.", Category = phone,
                     Brand = apple, Price = 799
                 },
-                new ProductModel
+                new Product
                 {
                     Name = "Galaxy S21", Slug = "galaxy-s21", Description = "This is a sample product.", Category = phone,
                     Brand = samsung, Price = 999

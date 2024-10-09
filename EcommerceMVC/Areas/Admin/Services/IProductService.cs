@@ -6,10 +6,10 @@ namespace EcommerceMVC.Areas.Admin.Services;
 
 public interface IProductService
 {
-    Task<List<ProductModel>> GetAllProductsAsync();
-    Task<ProductModel?> GetProductByIdAsync(int productId);
-    Task<List<ProductModel>> GetProductsByCategoryIdAsync(int categoryId);
-    Task CreateProductAsync(ProductModel product);
-    Task UpdateProductAsync(int productId, ProductModel product);
+    Task<List<Product>> GetAllProductsAsync();
+    Task<Product?> GetProductByIdAsync(int productId);
+    Task<List<Product>> GetProductsByCategoryIdAsync(int categoryId);
+    Task CreateProductAsync(Product product);
+    Task UpdateProductAsync(int productId, Product product);
     Task DeleteProductAsync(int productId);
 }

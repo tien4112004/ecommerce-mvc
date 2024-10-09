@@ -16,5 +16,5 @@ public interface ICategoryService
     /// </summary>
     /// <param name="categoryId">The category ID.</param>
     /// <returns>A list of product models.</returns>
-    Task<List<ProductModel>> GetProductsByCategoryIdAsync(int categoryId);
+    Task<List<Product>> GetProductsByCategoryIdAsync(int categoryId);
 }
