@@ -109,13 +109,6 @@
 							<label>Country:</label>
 							<select>
 								<option>United States</option>
-								<option>Bangladesh</option>
-								<option>UK</option>
-								<option>India</option>
-								<option>Pakistan</option>
-								<option>Ucrane</option>
-								<option>Canada</option>
-								<option>Dubai</option>
 							</select>
 
 						</li>
@@ -123,13 +116,6 @@
 							<label>Region / State:</label>
 							<select>
 								<option>Select</option>
-								<option>Dhaka</option>
-								<option>London</option>
-								<option>Dillih</option>
-								<option>Lahore</option>
-								<option>Alaska</option>
-								<option>Canada</option>
-								<option>Dubai</option>
 							</select>
 
 						</li>
@@ -146,12 +132,11 @@
 				<div class="total_area">
 					<ul>
 						<li>Cart Sub Total <span>$@Model.GrandTotal</span></li>
-						<li>Eco Tax <span>$2</span></li>
 						<li>Shipping Cost <span>???</span></li>
 						<li>Total <span>$61</span></li>
 					</ul>
 					<a class="btn btn-default update" href="">Update</a>
-					<a class="btn btn-default check_out" href="">Check Out</a>
+					<a class="btn btn-default check_out" asp-controller="Order" asp-action="Checkout" asp-route-userId="@User">Check Out</a>
 				</div>
 			</div>
 		</div>

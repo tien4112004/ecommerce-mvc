@@ -30,8 +30,8 @@ namespace EcommerceMVC.Data.Controllers
 			return View(cartVM);
 		}
 
-		public IActionResult Checkout()
-		{
+		public IActionResult Checkout(Guid userId)
+		{	
 			return View("~/Views/Checkout/Index.cshtml");
 		}
 

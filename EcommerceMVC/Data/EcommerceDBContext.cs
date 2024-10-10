@@ -10,6 +10,17 @@ namespace EcommerceMVC.Data
 		{
 		}
 
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.Entity<Order>()
+				.HasMany(o => o.OrderDetails)
+				.WithOne()
+				.HasForeignKey(od => od.OrderId)
+				.OnDelete(DeleteBehavior.Cascade);
+		}
+
 		public DbSet<Brand> Brands { get; set; }
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Category> Categories { get; set; }

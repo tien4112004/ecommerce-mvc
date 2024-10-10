@@ -9,6 +9,7 @@
 		public decimal TotalPrice => UnitPrice * Quantity;
 		public string Image { get; set; }
 
+		public Product Product { get; set; }
 
 		public CartItem()
 		{

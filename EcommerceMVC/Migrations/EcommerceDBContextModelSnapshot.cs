@@ -94,8 +94,8 @@ namespace EcommerceMVC.Data.Migrations
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("OrderId");
 
@@ -123,6 +123,8 @@ namespace EcommerceMVC.Data.Migrations
                     b.HasKey("OrderDetailId");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -374,10 +376,18 @@ namespace EcommerceMVC.Data.Migrations
             modelBuilder.Entity("EcommerceMVC.Data.Models.OrderDetail", b =>
                 {
                     b.HasOne("EcommerceMVC.Data.Models.Order", null)
-                        .WithMany("OrderItems")
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("EcommerceMVC.Data.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("EcommerceMVC.Data.Models.Product", b =>
@@ -452,7 +462,7 @@ namespace EcommerceMVC.Data.Migrations
 
             modelBuilder.Entity("EcommerceMVC.Data.Models.Order", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

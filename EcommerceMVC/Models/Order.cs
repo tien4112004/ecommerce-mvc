@@ -6,18 +6,20 @@ namespace EcommerceMVC.Data.Models;
 public class Order
 {
     public Guid OrderId { get; set; }
-    public string UserId { get; set; }
+    public Guid UserId { get; set; }
     public DateTime CreatedTime { get; set; }
     public decimal TotalAmount { get; set; }
     public int Status { get; set; }
-    public List<OrderDetail> OrderItems { get; set; }
+    public List<OrderDetail> OrderDetails { get; set; }
 
-    public Order()
+    public Order(Guid userId)
     {
         OrderId = new Guid();
         CreatedTime = DateTime.UtcNow;
+        UserId = userId;
         Status = OrderStatus.NOTPAID;
-        OrderItems = new List<OrderDetail>();
+        OrderDetails = new List<OrderDetail>();
+        TotalAmount = 0;
     }
 }
 
@@ -30,4 +32,5 @@ public static class OrderStatus
     public const int SHIPPED = 4;
     public const int DELIVERED = 5;
     public const int COMPLETED = 6;
+    public const int CANCELLED = 7;
 }

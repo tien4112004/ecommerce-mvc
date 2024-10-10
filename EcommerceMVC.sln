@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceMVC", "EcommerceMVC\EcommerceMVC.csproj", "{DBB2621D-5569-44ED-B107-8C60D2D8FC82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceMVC.Tests", "EcommerceMVC.Tests\EcommerceMVC.Tests.csproj", "{193D96AC-880C-49C8-AEBF-B218452C8792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DBB2621D-5569-44ED-B107-8C60D2D8FC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBB2621D-5569-44ED-B107-8C60D2D8FC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBB2621D-5569-44ED-B107-8C60D2D8FC82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{193D96AC-880C-49C8-AEBF-B218452C8792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{193D96AC-880C-49C8-AEBF-B218452C8792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{193D96AC-880C-49C8-AEBF-B218452C8792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{193D96AC-880C-49C8-AEBF-B218452C8792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
