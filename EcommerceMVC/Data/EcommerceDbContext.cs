@@ -4,9 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceMVC.Data
 {
-	public class EcommerceDBContext : IdentityDbContext<User>
+	public class EcommerceDbContext : IdentityDbContext<User>
 	{
-		public EcommerceDBContext(DbContextOptions options) : base(options)
+		public EcommerceDbContext() : base(new DbContextOptions<EcommerceDbContext>())
+		{
+		}
+		
+		public EcommerceDbContext(DbContextOptions options) : base(options)
 		{
 		}
 

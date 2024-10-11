@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceMVC.Data.Migrations
 {
-    [DbContext(typeof(EcommerceDBContext))]
+    [DbContext(typeof(EcommerceDbContext))]
     [Migration("20240930160551_RemoveSlugRequirement1")]
     partial class RemoveSlugRequirement1
     {

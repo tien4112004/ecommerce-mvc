@@ -5,13 +5,13 @@ namespace EcommerceMVC.Data.Services;
 
 public class CategoryService : ICategoryService
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CategoryService"/> class.
     /// </summary>
     /// <param name="context">The database context.</param>
-    public CategoryService(EcommerceDBContext context)
+    public CategoryService(EcommerceDbContext context)
     {
         _context = context;
     }

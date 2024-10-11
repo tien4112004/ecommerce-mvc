@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceMVC.Data.Migrations
 {
-    [DbContext(typeof(EcommerceDBContext))]
+    [DbContext(typeof(EcommerceDbContext))]
     [Migration("20241007043844_IdentityMigration")]
     partial class IdentityMigration
     {

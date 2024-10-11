@@ -8,9 +8,9 @@ namespace EcommerceMVC.Data.Services;
 
 public class OrderService : IOrderService
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
 
-    public OrderService(EcommerceDBContext context)
+    public OrderService(EcommerceDbContext context)
     {
         _context = context;
     }
@@ -48,7 +48,7 @@ public class OrderService : IOrderService
 
     public async Task<Order> GetOrderByIdAsync(Guid orderId)
     {
-        var order = await _context.Orders.FirstOrDefaultAsync(order => order.OrderId == orderId);
+        var order = await _context.Orders.FindAsync(orderId);
         return order;
     }
 

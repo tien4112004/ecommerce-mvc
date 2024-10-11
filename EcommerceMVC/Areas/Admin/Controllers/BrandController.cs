@@ -13,9 +13,9 @@ namespace EcommerceMVC.Areas.Admin.Controllers;
 public class BrandController : Controller {
     private readonly IProductService _productService;
     private readonly IBrandService _brandService;
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
 
-    public BrandController(IProductService productService, IBrandService brandService, EcommerceDBContext context)
+    public BrandController(IProductService productService, IBrandService brandService, EcommerceDbContext context)
     {
         _productService = productService;
         _brandService = brandService;

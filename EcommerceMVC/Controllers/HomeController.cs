@@ -8,9 +8,9 @@ namespace EcommerceMVC.Data.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly EcommerceDBContext _context;
+        private readonly EcommerceDbContext _context;
         
-        public HomeController(ILogger<HomeController> logger, EcommerceDBContext context)
+        public HomeController(ILogger<HomeController> logger, EcommerceDbContext context)
         {
             _logger = logger;
             _context = context;

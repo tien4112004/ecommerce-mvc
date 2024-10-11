@@ -9,10 +9,10 @@ namespace EcommerceMVC.Data.Controllers
 {
 	public class CartController : Controller
 	{
-		private readonly EcommerceDBContext _context;
+		private readonly EcommerceDbContext _context;
 		private const string CART_KEY = "Cart";
 
-		public CartController(EcommerceDBContext context)
+		public CartController(EcommerceDbContext context)
 		{
 			_context = context;
 		}

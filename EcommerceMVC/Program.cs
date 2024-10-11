@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<EcommerceDBContext>(options =>
+builder.Services.AddDbContext<EcommerceDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDbConnection")),
     ServiceLifetime.Scoped);
 
@@ -22,7 +22,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<EcommerceDBContext>().AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<EcommerceDbContext>().AddDefaultTokenProviders();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
@@ -95,7 +95,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<EcommerceDBContext>();
+var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<EcommerceDbContext>();
 DatabaseSeeder.SeedingData(context);
 
 app.Run();

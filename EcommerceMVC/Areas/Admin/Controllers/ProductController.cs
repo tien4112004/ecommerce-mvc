@@ -14,9 +14,9 @@ public class ProductController : Controller
 {
     private readonly IProductService _productService;
     private readonly ICategoryService _categoryService;
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
 
-    public ProductController(IProductService productService, ICategoryService categoryService, EcommerceDBContext context)
+    public ProductController(IProductService productService, ICategoryService categoryService, EcommerceDbContext context)
     {
         _productService = productService;
         _categoryService = categoryService;

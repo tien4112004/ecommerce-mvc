@@ -6,9 +6,9 @@ namespace EcommerceMVC.Areas.Admin.Services;
 
 public class BrandService : IBrandService
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
     
-    public BrandService(EcommerceDBContext context)
+    public BrandService(EcommerceDbContext context)
     {
         _context = context;
     }

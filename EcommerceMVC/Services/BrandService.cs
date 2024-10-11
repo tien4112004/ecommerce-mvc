@@ -7,13 +7,13 @@ namespace EcommerceMVC.Data.Services;
 
 public class BrandService : IBrandService
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BrandService"/> class.
     /// </summary>
     /// <param name="context">The database context.</param>
-    public BrandService(EcommerceDBContext context)
+    public BrandService(EcommerceDbContext context)
     {
         _context = context;
     }

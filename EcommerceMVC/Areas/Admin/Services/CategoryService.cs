@@ -6,9 +6,9 @@ namespace EcommerceMVC.Areas.Admin.Services;
 
 public class CategoryService : ICategoryService
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
     
-    public CategoryService(EcommerceDBContext context)
+    public CategoryService(EcommerceDbContext context)
     {
         _context = context;
     }

@@ -6,9 +6,9 @@ namespace EcommerceMVC.Data.Controllers
 {
 	public class ProductController : Controller
 	{
-		private readonly EcommerceDBContext _context;
+		private readonly EcommerceDbContext _context;
 
-		public ProductController(EcommerceDBContext context)
+		public ProductController(EcommerceDbContext context)
 		{
 			_context = context;
 		}

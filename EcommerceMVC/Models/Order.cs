@@ -14,7 +14,7 @@ public class Order
 
     public Order(Guid userId)
     {
-        OrderId = new Guid();
+        OrderId = Guid.NewGuid();
         CreatedTime = DateTime.UtcNow;
         UserId = userId;
         Status = OrderStatus.NOTPAID;

@@ -7,9 +7,9 @@ namespace EcommerceMVC.Data;
 
 public class DatabaseSeeder
 {
-    public static void SeedingData(EcommerceDBContext context)
+    public static void SeedingData(EcommerceDbContext context)
     {
-        context.Database.Migrate();
+        // context.Database.Migrate();
         if (!context.Products.Any())
         {
             Category laptop = new Category
@@ -47,18 +47,30 @@ public class DatabaseSeeder
             context.Products.AddRange(
                 new Product
                 {
-                    Name = "Macbook Air", Slug = "macbook-air", Description = "This is a sample product.", Category = laptop,
-                    Brand = apple, Price = 1199
+                    Name = "Macbook Air",
+                    Slug = "macbook-air",
+                    Description = "This is a sample product.",
+                    Category = laptop,
+                    Brand = apple,
+                    Price = 1199
                 },
                 new Product
                 {
-                    Name = "iPhone 13", Slug = "iPhone-13", Description = "This is a sample product.", Category = phone,
-                    Brand = apple, Price = 799
+                    Name = "iPhone 13",
+                    Slug = "iPhone-13",
+                    Description = "This is a sample product.",
+                    Category = phone,
+                    Brand = apple,
+                    Price = 799
                 },
                 new Product
                 {
-                    Name = "Galaxy S21", Slug = "galaxy-s21", Description = "This is a sample product.", Category = phone,
-                    Brand = samsung, Price = 999
+                    Name = "Galaxy S21",
+                    Slug = "galaxy-s21",
+                    Description = "This is a sample product.",
+                    Category = phone,
+                    Brand = samsung,
+                    Price = 999
                 });
         }
 

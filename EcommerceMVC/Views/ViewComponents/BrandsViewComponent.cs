@@ -5,9 +5,9 @@ namespace EcommerceMVC.Data.Components;
 
 public class BrandsViewComponent : ViewComponent
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
 
-    public BrandsViewComponent(EcommerceDBContext context)
+    public BrandsViewComponent(EcommerceDbContext context)
     {
         _context = context;
     } 

@@ -11,10 +11,10 @@ namespace EcommerceMVC.Areas.Admin.Services;
 
 public class ProductService : IProductService
 {
-    private readonly EcommerceDBContext _context;
+    private readonly EcommerceDbContext _context;
     private readonly IWebHostEnvironment _hostEnvironment;
 
-    public ProductService(EcommerceDBContext context, IWebHostEnvironment hostEnvironment)
+    public ProductService(EcommerceDbContext context, IWebHostEnvironment hostEnvironment)
     {
         _context = context;
         _hostEnvironment = hostEnvironment;
