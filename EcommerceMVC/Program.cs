@@ -6,12 +6,29 @@ using Microsoft.Extensions.DependencyInjection;
 using EcommerceMVC.Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// connection string
+Env.Load();
+
+var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultDbConnection")
+    .Replace("${DB_SERVER}", dbServer)
+    .Replace("${DB_NAME}", dbName)
+    .Replace("${DB_USER}", dbUser)
+    .Replace("${DB_PASSWORD}", dbPassword);
+
+// builder.Services.AddDbContext<EcommerceDbContext>(options =>
+//         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDbConnection")));
+
 builder.Services.AddDbContext<EcommerceDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDbConnection")),
-    ServiceLifetime.Scoped);
+        options.UseSqlServer(connectionString));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
@@ -59,7 +76,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IOrderService,OrderService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IProductService, EcommerceMVC.Areas.Admin.Services.ProductService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.ICategoryService, EcommerceMVC.Areas.Admin.Services.CategoryService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IBrandService, EcommerceMVC.Areas.Admin.Services.BrandService>();

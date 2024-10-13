@@ -17,25 +17,29 @@ public class OrderController : Controller
         _httpContextAccessor = httpContextAccessor;
     }
 
-public async Task<IActionResult> Checkout()
-{
-    var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-    var cart = HttpContext.Session.Get<List<CartItem>>("Cart");
-
-    if (cart == null || !cart.Any())
+    public async Task<IActionResult> Checkout()
     {
+        var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        var cart = HttpContext.Session.Get<List<CartItem>>("Cart");
+
+        if (cart == null || !cart.Any())
+        {
+            return RedirectToAction("Index", "Cart");
+        }
+
+        try
+        {
+            await _orderService.CreateOrderAsync(Guid.Parse(userId), cart);
+        }
+        catch (Exception e)
+        {
+            return Redirect("/404");
+        }
+        cart.Clear();
+        HttpContext.Session.Set("Cart", cart);
+
+        TempData["Success"] = "Order created successfully.";
         return RedirectToAction("Index", "Cart");
     }
-
-    try
-    {
-        await _orderService.CreateOrderAsync(Guid.Parse(userId), cart);
-    }
-    catch (Exception e)
-    {
-        return Redirect("/404");
-    }
-    return RedirectToAction("Index", "Cart");
-}
 }
