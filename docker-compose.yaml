@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - ecommercenetwork
+    hostname: sqlserver
+
+networks:
+    ecommercenetwork:
+      driver: bridge
