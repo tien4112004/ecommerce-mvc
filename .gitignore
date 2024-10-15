@@ -15,6 +15,9 @@ obj/
 .vscode/*
 .vscode/*.*
 
+# Jetbrains Rider
+.idea
+
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
