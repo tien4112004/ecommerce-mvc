@@ -11,14 +11,14 @@ public class Order
     public DateTime CreatedTime { get; set; }
     public decimal TotalAmount { get; set; }
     public int Status { get; set; }
-    
+
     // Delivery info
     public string FullName { get; set; }
     [DataType(DataType.PhoneNumber)]
     public string PhoneNumber { get; set; }
     public string Country { get; set; }
     public string City { get; set; }
-    public string District{ get; set; }
+    public string District { get; set; }
     public string Ward { get; set; }
     public string DetailAddress { get; set; }
     public string Note { get; set; }
@@ -35,8 +35,8 @@ public class Order
         OrderDetails = new List<OrderDetail>();
         TotalAmount = 0;
     }
-    
-    public Order(Guid userId, string fullName, string phoneNumber, string country, string city, string district, string ward, string detailAddress, string note)
+
+    public Order(Guid userId, ShippingAddress address, string note)
     {
         OrderId = Guid.NewGuid();
         CreatedTime = DateTime.UtcNow;
@@ -44,13 +44,13 @@ public class Order
         Status = OrderStatus.NOTPAID;
         OrderDetails = new List<OrderDetail>();
         TotalAmount = 0;
-        FullName = fullName;
-        PhoneNumber = phoneNumber;
-        Country = country;
-        City = city;
-        District = district;
-        Ward = ward;
-        DetailAddress = detailAddress;
+        FullName = address.FullName;
+        PhoneNumber = address.PhoneNumber;
+        Country = address.Country;
+        City = address.City;
+        District = address.District;
+        Ward = address.Ward;
+        DetailAddress = address.DetailAddress;
         Note = note;
     }
 }

@@ -9,7 +9,7 @@ public class DatabaseSeeder
 {
     public static void SeedingData(EcommerceDbContext context)
     {
-        // context.Database.Migrate();
+        context.Database.Migrate();
         if (!context.Products.Any())
         {
             Category laptop = new Category
