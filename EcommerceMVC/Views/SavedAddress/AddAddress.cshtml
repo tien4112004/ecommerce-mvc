@@ -1,0 +1,57 @@
+@model EcommerceMVC.Data.Models.ShippingAddress
+
+@{
+    ViewData["Title"] = "Add Address";
+}
+
+<h3>Add New Address</h3>
+<form asp-action="AddAddress" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label class="col-form-label">Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Phone Number</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Address Line</label>
+        <input asp-for="DetailAddress" class="form-control" />
+        <span asp-validation-for="DetailAddress" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Country</label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">City</label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">District</label>
+        <input asp-for="District" class="form-control" />
+        <span asp-validation-for="District" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label">Ward</label>
+        <input asp-for="Ward" class="form-control" />
+        <span asp-validation-for="Ward" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex">
+        <button type="submit" class="btn btn-primary mr-2">Create</button>
+        <a asp-controller="SavedAddresses" asp-action="ListAddresses" class="btn btn-danger">Back to list</a>
+    </div>
+</form>

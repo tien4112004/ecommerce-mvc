@@ -1,0 +1,52 @@
+@model IEnumerable<EcommerceMVC.Data.Models.Order>
+
+@{
+    ViewData["Title"] = "All orders";
+}
+
+<h5 class="card-header">Orders</h5>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered first">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Created time</th>
+                    <th>User</th>
+                    <th>Total amount</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in @Model)
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@order.CreatedTime</td>
+                        <td>@order.UserId</td>
+                        <td>@order.TotalAmount</td>
+                        <td>order.Address</td>
+                        <td>@order.Status</td>
+                        <td>
+                            <a asp-controller="Order" asp-action="Detail" asp-route-orderId="@order.OrderId"
+                                class="btn btn-warning btn-sm">Detail</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Created time</th>
+                    <th>User</th>
+                    <th>Total amount</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

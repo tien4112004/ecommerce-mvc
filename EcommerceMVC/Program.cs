@@ -7,6 +7,7 @@ using EcommerceMVC.Data.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using DotNetEnv;
+using EcommerceMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,9 +78,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<ISavedAddressService, SavedAddressService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IProductService, EcommerceMVC.Areas.Admin.Services.ProductService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.ICategoryService, EcommerceMVC.Areas.Admin.Services.CategoryService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IBrandService, EcommerceMVC.Areas.Admin.Services.BrandService>();
+builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IOrderService, EcommerceMVC.Areas.Admin.Services.OrderService>();
 
 var app = builder.Build();
 

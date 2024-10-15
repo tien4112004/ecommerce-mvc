@@ -1,5 +1,5 @@
 ﻿@using Microsoft.IdentityModel.Tokens
-@model EcommerceMVC.Data.Views.ViewModels.CartItemViewModel
+@model EcommerceMVC.Data.Views.ViewModels.CartViewModel
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -136,7 +136,7 @@
 						<li>Total <span>$61</span></li>
 					</ul>
 					<a class="btn btn-default update" href="">Update</a>
-					<a class="btn btn-default check_out" asp-controller="Order" asp-action="Checkout" asp-route-userId="@User">Check Out</a>
+					<a class="btn btn-default check_out" asp-controller="Cart" asp-action="Checkout" asp-route-userId="@User">Check Out</a>
 				</div>
 			</div>
 		</div>

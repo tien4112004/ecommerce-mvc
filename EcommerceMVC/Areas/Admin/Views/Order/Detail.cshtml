@@ -1,0 +1,79 @@
+@model EcommerceMVC.Data.Models.Order
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h3>Order: @Model.OrderId</h3>
+
+<a class="btn btn-danger btn-sm confirmDeletion" asp-controller="Order" asp-action="CancelOrder" asp-route-orderId="@Model.OrderId">Cancel order</a>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Order summary</h5>
+        <div class="card-body">
+        <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td><b>Created time</b></td>
+                <td>@Model.CreatedTime</td>
+            </tr>
+            <tr>
+                <td><b>Name</b></td>
+                <td>@Model.FullName</td>
+            </tr>
+            <tr>
+                <td><b>Phone Number</b></td>
+                <td>@Model.PhoneNumber</td>
+            </tr>
+            <tr>
+                <td><b>Shipping address</b></td>
+                <td>@Model.FullAddress</td>
+            </tr>
+            <tr>
+                <td><b>Notes</b></td>
+                <td>@Model.Note</td>
+            </tr>
+            <tr>
+                <td><b>Status</b></td>
+                <td>@Model.Status</td>
+            </tr>
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Order details</h5>
+        <div class="card-body">     
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    @* <th scope="col">#</th> *@
+                    <th scope="col">Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var detail in Model.OrderDetails)
+                {
+                    <tr>
+                        @* <th scope="row">1</th> *@
+                        <td>@detail.Product.Image</td>
+                        <td>@detail.Product.Name</td>
+                        <td>@detail.UnitPrice</td>
+                        <td>@detail.Quantity</td>
+                        <td>@detail.TotalPrice</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

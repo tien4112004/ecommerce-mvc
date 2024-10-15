@@ -1,8 +1,60 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model EcommerceMVC.Data.Views.ViewModels.CheckoutViewModel
 @{
-    ViewData["Title"] = "Checkout";
+  ViewData["Title"] = "Checkout";
 }
 
-<h3>Checkout page</h3>
+<h3>Checkout</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in @Model.Cart.CartItems)
+          {
+            <tr>
+              <td>@item.ProductName</td>
+              <td>@item.Quantity</td>
+              <td>$@item.UnitPrice</td>
+              <td>$@item.TotalPrice</td>
+            </tr>
+          }
+          <tr>
+            <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
+            <td><strong>$@Model.GrandTotal</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <h4>Shipping Address</h4>
+      <form asp-controller="Order" asp-action="Create" method="post">
+        <div class="form-group">
+          <label class="col-form-label">Shipping address</label>
+          <select asp-for="SelectedAddressId" class="form-control" asp-items="Model.Addresses">
+            <option value="">--Choose an address--</option>
+          </select>
+          <span asp-validation-for="SelectedAddressId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="orderNotes">Order Notes</label>
+          <textarea asp-for="Note" class="form-control"
+            placeholder="Enter any special instructions or notes for your order"></textarea>
+          <span asp-validation-for="Note" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Place Order</button>
+        <a class="btn btn-secondary" asp-controller="SavedAddresses" asp-action="AddAddress">Add New Address</a>
+      </form>
+    </div>
+  </div>
+</div>
