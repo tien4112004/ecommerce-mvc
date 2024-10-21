@@ -69,12 +69,19 @@ namespace EcommerceMVC.Controllers
 			{
 				var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
-				if (result.Succeeded)
+
+				if (result.IsLockedOut)
+				{
+					ModelState.AddModelError(string.Empty, "Account has been locked.");
+				}
+				else if (result.Succeeded)
 				{
 					return RedirectToAction("Index", "Home");
 				}
-
-				ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+				else
+				{
+					ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+				}
 			}
 
 			return View(model);

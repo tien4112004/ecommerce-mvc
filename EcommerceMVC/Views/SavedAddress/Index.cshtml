@@ -3,35 +3,29 @@
 }
 
 <h3>Saved Addresses</h3>
-<table>
+<a class="btn btn-default" asp-controller="SavedAddress" asp-action="AddAddress">New address</a>
+
+<table class="table">
     <thead>
-        <tr>
-            <th>Full Name</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>Country</th>
-            <th>City</th>
-            <th>District</th>
-            <th>Ward</th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Actions</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.FullName</td>
-                <td>@item.PhoneNumber</td>
-                <td>@item.DetailAddress</td>
-                <td>@item.Country</td>
-                <td>@item.City</td>
-                <td>@item.District</td>
-                <td>@item.Ward</td>
-                <td>
-                    <a asp-controller="SavedAddresses" asp-action="EditAddress" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-controller="SavedAddresses" asp-action="DeleteAddress" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.PhoneNumber</td>
+            <td>@($"{item.DetailAddress}, {item.Ward}, {item.District}, {item.City}, {item.Country}")</td>
+            <td>
+                <a asp-controller="SavedAddress" asp-action="EditAddress" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="SavedAddress" asp-action="DeleteAddress" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>

@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using AspNetCoreGeneratedDocument;
 using EcommerceMVC.Data.Extensions;
 using EcommerceMVC.Data.Models;
 using EcommerceMVC.Data.Views.ViewModels;
@@ -37,9 +36,9 @@ public class OrderController : Controller
 
         try
         {
-            await _orderService.CreateOrderAsync(Guid.Parse(userId), cart, address, model.Note);
+            await _orderService.CreateOrderAsync(userId, cart, address, model.Note);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return Redirect("/404");
         }
@@ -55,29 +54,29 @@ public class OrderController : Controller
     {
         var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        var orders = _orderService.GetOrdersByUser(Guid.Parse(userId));
+        var orders = _orderService.GetOrdersByUser(userId);
 
         return View(orders);
     }
 
-    public async Task<IActionResult> Detail(Guid orderId)
+    public async Task<IActionResult> Detail(string orderId)
     {
         var order = await _orderService.GetOrderByIdAsync(orderId);
         if (order == null)
         {
-            throw new Exception("Order not found");
+            // throw new Exception("Order not found");
             return Redirect("/404");
         }
 
         return View(order);
     }
 
-    public async Task<IActionResult> CancelOrder(Guid orderId)
+    public async Task<IActionResult> CancelOrder(string orderId)
     {
         var order = await _orderService.GetOrderByIdAsync(orderId);
         if (order == null)
         {
-            throw new Exception("Order not found");
+            // throw new Exception("Order not found");
             return Redirect("/404");
         }
 

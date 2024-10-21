@@ -1,4 +1,5 @@
 ﻿using EcommerceMVC.Data;
+using EcommerceMVC.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace EcommerceMVC.Data.Controllers
 
 		public IActionResult Index()
 		{
-			var products = _context.Products;
+			var products = _context.Products.Where(p => p.Status != ProductStatus.Inactive);
 			return View(products);
 		}
 

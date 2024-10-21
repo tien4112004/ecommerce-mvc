@@ -83,6 +83,7 @@ builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IProductService, Ec
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.ICategoryService, EcommerceMVC.Areas.Admin.Services.CategoryService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IBrandService, EcommerceMVC.Areas.Admin.Services.BrandService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IOrderService, EcommerceMVC.Areas.Admin.Services.OrderService>();
+builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IUserService, EcommerceMVC.Areas.Admin.Services.UserService>();
 
 var app = builder.Build();
 

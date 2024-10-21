@@ -23,13 +23,13 @@ public class OrderController : Controller
         return View(orders);
     }
 
-    public async Task<IActionResult> Detail(Guid orderId)
+    public async Task<IActionResult> Detail(string orderId)
     {
         var order = await _orderService.GetOrderByIdAsync(orderId);
         return View(order);
     }
-    
-    public async Task<IActionResult> CancelOrder(Guid orderId)
+
+    public async Task<IActionResult> CancelOrder(string orderId)
     {
         await _orderService.UpdateOrderStatusAsync(orderId, OrderStatus.CANCELLED);
         return RedirectToAction(nameof(Detail), new { orderId });

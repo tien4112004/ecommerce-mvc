@@ -31,9 +31,9 @@ public class OrderService : IOrderService
     /// <returns>A task that represents the asynchronous operation. The task result contains the created order.</returns>
     /// <exception cref="ArgumentException">Thrown when the input parameters are invalid.</exception>
     /// <exception cref="Exception">Thrown when there is an error creating the order.</exception>
-    public async Task<Order> CreateOrderAsync(Guid userId, List<CartItem> items, ShippingAddress address, string note)
+    public async Task<Order> CreateOrderAsync(string userId, List<CartItem> items, ShippingAddress address, string note)
     {
-        if (userId == Guid.Empty || items == null || !items.Any())
+        if (userId == Guid.Empty.ToString() || items == null || !items.Any())
             throw new ArgumentException("Invalid input parameters");
 
         Order order = new Order(userId, address, note);
@@ -71,9 +71,9 @@ public class OrderService : IOrderService
     /// <returns>A task that represents the asynchronous operation. The task result contains the order.</returns>
     /// <exception cref="ArgumentException">Thrown when the order ID is empty.</exception>
     /// <exception cref="KeyNotFoundException">Thrown when the order is not found.</exception>
-    public async Task<Order> GetOrderByIdAsync(Guid orderId)
+    public async Task<Order> GetOrderByIdAsync(string orderId)
     {
-        if (orderId == Guid.Empty)
+        if (orderId == Guid.Empty.ToString())
             throw new ArgumentException("Order ID cannot be empty", nameof(orderId));
 
         var order = await _context.Orders
@@ -93,9 +93,9 @@ public class OrderService : IOrderService
     /// <param name="userId">The ID of the user.</param>
     /// <returns>A collection of orders for the user.</returns>
     /// <exception cref="ArgumentException">Thrown when the user ID is empty.</exception>
-    public IEnumerable<Order> GetOrdersByUser(Guid userId)
+    public IEnumerable<Order> GetOrdersByUser(string userId)
     {
-        if (userId == Guid.Empty)
+        if (userId == Guid.Empty.ToString())
         {
             throw new ArgumentException("User ID cannot be empty", nameof(userId));
         }
@@ -111,7 +111,7 @@ public class OrderService : IOrderService
     /// <param name="status">The new status of the order.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
     /// <exception cref="KeyNotFoundException">Thrown when the order is not found.</exception>
-    public async Task UpdateOrderStatusAsync(Guid orderId, int status)
+    public async Task UpdateOrderStatusAsync(string orderId, int status)
     {
         var order = await _context.Orders.FindAsync(orderId);
         if (order == null)
@@ -128,7 +128,7 @@ public class OrderService : IOrderService
     /// </summary>
     /// <param name="orderId">The ID of the order to cancel.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    public async Task CancelOrderAsync(Guid orderId)
+    public async Task CancelOrderAsync(string orderId)
     {
         await UpdateOrderStatusAsync(orderId, OrderStatus.CANCELLED);
     }

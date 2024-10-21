@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Net.Mime;
+﻿using Azure.Identity;
 using EcommerceMVC.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace EcommerceMVC.Data;
 
@@ -10,6 +10,34 @@ public class DatabaseSeeder
     public static void SeedingData(EcommerceDbContext context)
     {
         context.Database.Migrate();
+        
+        if (!context.Users.Any())
+        {
+            var passwordHasher = new PasswordHasher<User>();
+
+            User admin = new User
+            {
+                UserName = "admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@example.com",
+                NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                EmailConfirmed = true,
+            };
+            admin.PasswordHash = passwordHasher.HashPassword(admin, "Admin@123");
+
+            User user = new User
+            {
+                UserName = "user",
+                NormalizedUserName = "USER",
+                Email = "user@example.com",
+                NormalizedEmail = "USER@EXAMPLE.COM",
+                EmailConfirmed = true,
+            };
+            user.PasswordHash = passwordHasher.HashPassword(user, "User@123");
+
+            context.Users.AddRange(admin, user);
+        }
+
         if (!context.Products.Any())
         {
             Category laptop = new Category

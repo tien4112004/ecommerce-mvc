@@ -4,8 +4,8 @@ namespace EcommerceMVC.Data.Models;
 
 public class OrderDetail
 {
-    public Guid OrderDetailId { get; set; }
-    public Guid OrderId { get; set; }
+    public string OrderDetailId { get; set; }
+    public string OrderId { get; set; }
     public int ProductId { get; set; }
     public int Quantity { get; set; }
     public decimal UnitPrice { get; set; }
@@ -14,9 +14,9 @@ public class OrderDetail
 
     public OrderDetail() { }
 
-    public OrderDetail(CartItem item, Guid orderId)
+    public OrderDetail(CartItem item, string orderId)
     {
-        OrderDetailId = new Guid();
+        OrderDetailId = Guid.NewGuid().ToString();
         OrderId = orderId;
         ProductId = item.ProductId;
         Quantity = item.Quantity;

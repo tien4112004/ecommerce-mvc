@@ -47,11 +47,18 @@
 					<p>ID: @Model.Id</p>
 					<img src="~/images/product-details/rating.png" alt="" />
 					<span>
-						<span class="price">US $@Model.Price</span>
+						@if (Model.Status == ProductStatus.Discontinued)
+						{
+							<span class="price">Discontinued</span>
+						}
+						else
+						{
+							<span class="price">US $@Model.Price</span>
+						}
 						<label>Quantity:</label>
-						<input type="text" id="quantityInput" value="1" />
+						<input type="text" id="quantityInput" value="1"/>
 						//TODO: handle quantity
-						<a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1"> 
+						<a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id" asp-route-quantity="1">
 							<button type="button" class="btn btn-fefault cart">
 								<i class="fa fa-shopping-cart"></i>
 								Add to cart

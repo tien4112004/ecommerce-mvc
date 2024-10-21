@@ -6,8 +6,8 @@ namespace EcommerceMVC.Data.Models;
 
 public class Order
 {
-    public Guid OrderId { get; set; }
-    public Guid UserId { get; set; }
+    public string OrderId { get; set; }
+    public string UserId { get; set; }
     public DateTime CreatedTime { get; set; }
     public decimal TotalAmount { get; set; }
     public int Status { get; set; }
@@ -26,9 +26,9 @@ public class Order
 
     public List<OrderDetail> OrderDetails { get; set; }
 
-    public Order(Guid userId)
+    public Order(string userId)
     {
-        OrderId = Guid.NewGuid();
+        OrderId = Guid.NewGuid().ToString();
         CreatedTime = DateTime.UtcNow;
         UserId = userId;
         Status = OrderStatus.NOTPAID;
@@ -36,9 +36,9 @@ public class Order
         TotalAmount = 0;
     }
 
-    public Order(Guid userId, ShippingAddress address, string note)
+    public Order(string userId, ShippingAddress address, string note)
     {
-        OrderId = Guid.NewGuid();
+        OrderId = Guid.NewGuid().ToString();
         CreatedTime = DateTime.UtcNow;
         UserId = userId;
         Status = OrderStatus.NOTPAID;

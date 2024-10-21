@@ -2300,13 +2300,6 @@ textarea {
   border: 1px solid#F7F7F0;
 }
 
-.btn.btn-primary {
-  background: #fe980f;
-  border: 0 none;
-  border-radius: 0;
-  margin-top: 16px;
-}
-
 .blank-arrow {
   position: relative;
 }

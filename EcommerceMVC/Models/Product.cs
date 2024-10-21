@@ -16,6 +16,7 @@ namespace EcommerceMVC.Data.Models
 		[Required]
 		public decimal Price { get; set; }
 		public string Image { get; set; }
+		public int Status { get; set; }
 		
 		[NotMapped]
 		[FileExtension]
@@ -29,5 +30,12 @@ namespace EcommerceMVC.Data.Models
 
 		public Category Category { get; set; }
 		public Brand Brand { get; set; }
+	}
+
+	public static class ProductStatus
+	{
+		public const int Active = 1;
+		public const int Inactive = 0;
+		public const int Discontinued = 2;
 	}
 }

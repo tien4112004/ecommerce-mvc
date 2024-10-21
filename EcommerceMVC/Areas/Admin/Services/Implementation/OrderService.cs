@@ -22,8 +22,8 @@ public class OrderService : IOrderService
         var orders = await _context.Orders.OrderByDescending(order => order.CreatedTime).ToListAsync();
         return orders;
     }
-    
-    public async Task AddItemToOrderAsync(Guid orderId, int productId, int quantity)
+
+    public async Task AddItemToOrderAsync(string orderId, int productId, int quantity)
     {
         var order = await _context.Orders.FindAsync(orderId);
         if (order == null)
@@ -62,7 +62,7 @@ public class OrderService : IOrderService
         await _context.SaveChangesAsync();
     }
 
-    public async Task CancelOrderAsync(Guid orderId)
+    public async Task CancelOrderAsync(string orderId)
     {
         var order = await _context.Orders.FindAsync(orderId);
         if (order == null)
@@ -81,12 +81,12 @@ public class OrderService : IOrderService
         await _context.SaveChangesAsync();
     }
 
-    public Task<Order> CreateOrderAsync(Guid userId)
+    public Task<Order> CreateOrderAsync(string userId)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Order> GetOrderByIdAsync(Guid orderId)
+    public async Task<Order> GetOrderByIdAsync(string orderId)
     {
         var order = await _context.Orders
             .Include(order => order.OrderDetails)
@@ -99,13 +99,13 @@ public class OrderService : IOrderService
         return order;
     }
 
-    public IEnumerable<Order> GetOrdersByUser(Guid userId)
+    public IEnumerable<Order> GetOrdersByUser(string userId)
     {
         var orders = _context.Orders.Where(o => o.UserId == userId).ToList();
         return orders;
     }
 
-    public Task UpdateOrderStatusAsync(Guid orderId, int status)
+    public Task UpdateOrderStatusAsync(string orderId, int status)
     {
         var order = _context.Orders.Find(orderId);
         if (order == null)
@@ -118,7 +118,7 @@ public class OrderService : IOrderService
         return _context.SaveChangesAsync();
     }
 
-    public async Task<decimal> CalculateTotalAmountAsync(Guid orderId)
+    public async Task<decimal> CalculateTotalAmountAsync(string orderId)
     {
         var order = await _context.Orders.FindAsync(orderId);
         if (order == null)

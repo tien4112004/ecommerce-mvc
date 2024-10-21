@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EcommerceMVC.Controllers;
 
 [Authorize]
+[Route("Account/[controller]/[action]")]
 public class SavedAddressController : Controller
 {
     private readonly ISavedAddressService _addressService;
@@ -26,7 +27,7 @@ public class SavedAddressController : Controller
     [HttpGet]
     public IActionResult AddAddress()
     {
-        return View();
+        return RedirectToAction("Index");
     }
 
     [HttpPost]
@@ -40,6 +41,6 @@ public class SavedAddressController : Controller
             await _addressService.AddAsync(address);
             return RedirectToAction("ListAddresses");
         }
-        return View(address);
+        return RedirectToAction("Index");
     }
 }
