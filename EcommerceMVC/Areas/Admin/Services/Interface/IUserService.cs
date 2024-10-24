@@ -10,6 +10,7 @@ public interface IUserService
     Task<User?> GetUserByIdAsync(string userId);
     Task CreateUserAsync(User user);
     Task UpdateUserAsync(string userId, User user);
+    Task SetUserPasswordAsync(string userId, string newPassword);
     Task LockUserAsync(string userId);
     Task UnlockUserAsync(string userId);
 }

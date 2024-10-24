@@ -42,18 +42,31 @@ public class UserService : IUserService
             throw new InvalidOperationException("User not found.");
         }
 
-        existingUser.UserName = user.UserName;
         existingUser.Email = user.Email;
         existingUser.PhoneNumber = user.PhoneNumber;
         existingUser.EmailConfirmed = user.EmailConfirmed;
         existingUser.PhoneNumberConfirmed = user.PhoneNumberConfirmed;
-        existingUser.PasswordHash = user.PasswordHash;
 
         _context.Users.Update(existingUser);
         await _context.SaveChangesAsync();
     }
 
+    public async Task SetUserPasswordAsync(string userId, string newPassword)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
 
+        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+        var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+        if (!result.Succeeded)
+        {
+            throw new InvalidOperationException("Failed to set user password.");
+        }
+    }
+    
     public async Task LockUserAsync(string userId)
     {
         try
