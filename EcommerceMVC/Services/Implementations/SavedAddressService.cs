@@ -1,32 +1,33 @@
 using EcommerceMVC.Data;
 using EcommerceMVC.Data.Models;
+using EcommerceMVC.Services;
 
-namespace EcommerceMVC.Services;
+namespace EcommerceMVC.Services.Implementations;
 
 public class SavedAddressService : ISavedAddressService
 {
     private readonly EcommerceDbContext _context;
     // private readonly ILogger<>
-    
+
     public SavedAddressService(EcommerceDbContext context)
     {
         _context = context;
     }
-    
+
     public async Task AddAsync(ShippingAddress address)
-    {   
+    {
         await _context.SavedAddresses.AddAsync(address);
-        await _context.SaveChangesAsync(); 
+        await _context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(ShippingAddress address)
     {
-        var savedAddress = _context.SavedAddresses.FindAsync(address.Id);
+        var savedAddress = await _context.SavedAddresses.FindAsync(address.Id);
         if (savedAddress == null)
         {
             throw new InvalidOperationException("Address not found");
         }
-        
+
         _context.SavedAddresses.Update(address);
         await _context.SaveChangesAsync();
     }
@@ -38,7 +39,7 @@ public class SavedAddressService : ISavedAddressService
         {
             throw new InvalidOperationException("Address not found");
         }
-        
+
         _context.SavedAddresses.Remove(savedAddress);
     }
 
@@ -48,7 +49,7 @@ public class SavedAddressService : ISavedAddressService
     }
 
     public async Task<IEnumerable<ShippingAddress>> GetByUserIdAsync(Guid userId)
-    {   
+    {
         var addresses = _context.SavedAddresses.Where(a => a.UserId == userId);
         return addresses;
     }

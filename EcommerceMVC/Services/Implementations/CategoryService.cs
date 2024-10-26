@@ -1,7 +1,9 @@
 ﻿using EcommerceMVC.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using EcommerceMVC.Services;
+using EcommerceMVC.Data;
 
-namespace EcommerceMVC.Data.Services;
+namespace EcommerceMVC.Services.Implementations;
 
 public class CategoryService : ICategoryService
 {

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EcommerceMVC.Data.Models;
+using EcommerceMVC.Data;
+using EcommerceMVC.Services;
 
-namespace EcommerceMVC.Data.Services;
+namespace EcommerceMVC.Services.Implementations;
 
 public class BrandService : IBrandService
 {

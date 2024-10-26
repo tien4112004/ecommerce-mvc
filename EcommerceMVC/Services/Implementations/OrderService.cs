@@ -1,11 +1,10 @@
 ﻿using System.Data;
 using EcommerceMVC.Data;
 using EcommerceMVC.Data.Models;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol;
+using EcommerceMVC.Services;
 
-namespace EcommerceMVC.Services;
+namespace EcommerceMVC.Services.Implementations;
 
 /// <summary>
 /// Service class for managing orders

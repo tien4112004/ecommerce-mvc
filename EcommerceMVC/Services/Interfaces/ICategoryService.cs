@@ -1,6 +1,6 @@
 ﻿using EcommerceMVC.Data.Models;
 
-namespace EcommerceMVC.Data.Services;
+namespace EcommerceMVC.Services;
 
 public interface ICategoryService
 {

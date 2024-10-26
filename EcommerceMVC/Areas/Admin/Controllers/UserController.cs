@@ -42,7 +42,7 @@ public class UserController : Controller
     public async Task<IActionResult> UnlockUser([FromForm] string userId)
     {
         try
-        {
+        {   
             await _userService.UnlockUserAsync(userId);
             TempData["Success"] = "User has been unlocked successfully.";
         }
