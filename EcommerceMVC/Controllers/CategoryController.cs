@@ -1,6 +1,6 @@
 ﻿using EcommerceMVC.Data.Models;
 using EcommerceMVC.Data;
-using EcommerceMVC.Data.Services;
+using EcommerceMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +9,7 @@ namespace EcommerceMVC.Data.Controllers;
 /// <summary>
 /// Controller for handling category-related actions.
 /// </summary>
-[Route("category")]
+[Route("Category")]
 public class CategoryController : Controller
 {
     private readonly ICategoryService _categoryService;

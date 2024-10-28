@@ -17,16 +17,16 @@ namespace EcommerceMVC.Data.Models
 		public decimal Price { get; set; }
 		public string Image { get; set; }
 		public int Status { get; set; }
-		
+
 		[NotMapped]
 		[FileExtension]
 		public IFormFile ImageUpload { get; set; }
-		
+
 		[Required, Range(1, int.MaxValue, ErrorMessage = "Brand has to be selected")]
 		public int BrandId { get; set; }
-		[Required, Range(1, int.MaxValue,ErrorMessage = "Category has to be selected")]
+		[Required, Range(1, int.MaxValue, ErrorMessage = "Category has to be selected")]
 		public int CategoryId { get; set; }
-		
+
 
 		public Category Category { get; set; }
 		public Brand Brand { get; set; }

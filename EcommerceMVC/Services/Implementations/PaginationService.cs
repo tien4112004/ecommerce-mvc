@@ -14,10 +14,10 @@ public class PaginationService<T> where T : class
         _context = context;
     }
 
-    public async Task<Paginate<T>> GetPaginatedData(IQueryable<T> source, int page, int pageSize)
+    public async Task<PagedResult<T>> GetPaginatedData(IQueryable<T> source, int page, int pageSize)
     {
         var totalItems = await source.CountAsync();
         var items = await source.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-        return new Paginate<T>(items, totalItems, page, pageSize);
+        return new PagedResult<T>(items, totalItems, page, pageSize);
     }
 }

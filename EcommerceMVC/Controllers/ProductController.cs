@@ -1,11 +1,12 @@
-﻿using EcommerceMVC.Areas.Admin.Services;
-using EcommerceMVC.Data;
-using EcommerceMVC.Data.Models;
+﻿using EcommerceMVC.Data.Models;
+using EcommerceMVC.Helpers;
+using EcommerceMVC.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
-namespace EcommerceMVC.Data.Controllers
+namespace EcommerceMVC.Controllers
 {
+	[Route("Product")]
 	public class ProductController : Controller
 	{
 		private readonly IProductService _productService;
@@ -15,12 +16,15 @@ namespace EcommerceMVC.Data.Controllers
 			_productService = productService;
 		}
 
-		public async Task<IActionResult> Index()
+		[Route("")]
+		[Route("Index")]
+		public async Task<IActionResult> Index(int page = 1, int pageSize = 12)
 		{
-			var products = await _productService.GetAllProductsAsync();
-			return View(products);
+			var paginatedProducts = await _productService.GetPaginatedProductsAsync(page, pageSize);
+			return View(paginatedProducts);
 		}
 
+		[Route("{productId}")]
 		public async Task<IActionResult> Detail(int? productId)
 		{
 			if (productId == null) return RedirectToAction("Index");

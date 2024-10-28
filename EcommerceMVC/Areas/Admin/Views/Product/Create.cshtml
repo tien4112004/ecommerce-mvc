@@ -57,9 +57,9 @@
                     <div class="form-group">
                         <label class="col-form-label">Product status</label>
                         <select asp-for="Status" class="form-control">
-                            <option value="Available">Available</option>
-                            <option value="OutOfStock">Out of Stock</option>
-                            <option value="Discontinued">Discontinued</option>
+                            <option value="1">Available</option>
+                            <option value="0">Out of Stock</option>
+                            <option value="2">Discontinued</option>
                         </select>
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
@@ -82,9 +82,9 @@
     }
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const imageUpload = document.querySelector('#ImageUpload');
-            imageUpload.addEventListener('change', function(event) {
+            imageUpload.addEventListener('change', function (event) {
                 readURL(event.target);
             });
         });

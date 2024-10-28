@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EcommerceMVC.Data.Models.Product>
+﻿@model EcommerceMVC.Helpers.PagedResult<EcommerceMVC.Data.Models.Product>
 
 @{
 	ViewData["Title"] = "All Products";
@@ -12,11 +12,34 @@
 	<div class="features_items">
 		<!--features_items-->
 		<h2 class="title">Features Items</h2>
-		@foreach (var product in Model)
+		@foreach (var product in Model.Items)
 		{
 			<div class="col-sm-4">
 				@await Html.PartialAsync("_ProductCard", product)
 			</div>
 		}
 	</div><!--features_items-->
+
+	<ul class="pagination">
+		@if (Model.HasPreviousPage)
+		{
+			<li class="page-item">
+				<a href="?page=@(Model.CurrentPage - 1)" class="page-link">Prev</a>
+			</li>
+		}
+
+		@for (int i = 1; i <= Model.TotalPages; i++)
+		{
+			<li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+				<a href="?page=@i" class="page-link">@i</a>
+			</li>
+		}
+
+		@if (Model.HasNextPage)
+		{
+			<li class="page-item">
+				<a href="?page=@(Model.CurrentPage + 1)" class="page-link">Next</a>
+			</li>
+		}
+	</ul>
 </div>

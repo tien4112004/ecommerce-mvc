@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EcommerceMVC.Controllers;
 
 [Authorize]
-[Route("Account/[controller]/[action]")]
+[Route("Account/[Controller]/[Action]")]
 public class SavedAddressController : Controller
 {
     private readonly ISavedAddressService _addressService;

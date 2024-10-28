@@ -1,12 +1,15 @@
 ﻿using System.Security.Claims;
-using EcommerceMVC.Data.Extensions;
+using EcommerceMVC.Helpers.Extensions;
 using EcommerceMVC.Data.Models;
 using EcommerceMVC.Data.Views.ViewModels;
 using EcommerceMVC.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceMVC.Controllers;
 
+[Authorize]
+[Route("Account/[Controller]/[Action]")]
 public class OrderController : Controller
 {
     private readonly IOrderService _orderService;

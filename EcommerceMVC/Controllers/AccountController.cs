@@ -1,5 +1,6 @@
 ﻿using EcommerceMVC.Data.Models;
 using EcommerceMVC.Dtos.UserDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

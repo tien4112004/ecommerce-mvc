@@ -1,5 +1,5 @@
 ﻿using EcommerceMVC.Data.Models;
-using EcommerceMVC.Data.Services;
+using EcommerceMVC.Services;
 using EcommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ namespace EcommerceMVC.Data.Controllers;
 /// <summary>
 /// Controller for handling brand-related actions.
 /// </summary>
-[Route("brand")]
+[Route("Brand")]
 public class BrandController : Controller
 {
 	private readonly IBrandService _brandService;

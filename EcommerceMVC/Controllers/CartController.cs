@@ -3,13 +3,15 @@ using System.Security.Claims;
 using EcommerceMVC.Data.Models;
 using EcommerceMVC.Data;
 using EcommerceMVC.Data.Views.ViewModels;
-using EcommerceMVC.Data.Extensions;
+using EcommerceMVC.Helpers.Extensions;
 using EcommerceMVC.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EcommerceMVC.Data.Controllers
 {
+	[Authorize]
 	public class CartController : Controller
 	{
 		private readonly EcommerceDbContext _context;

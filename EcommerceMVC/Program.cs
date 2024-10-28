@@ -3,11 +3,11 @@ using EcommerceMVC.Data;
 using EcommerceMVC.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using EcommerceMVC.Data.Services;
+using EcommerceMVC.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using DotNetEnv;
-using EcommerceMVC.Services;
+using EcommerceMVC.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,12 +78,16 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ISavedAddressService, SavedAddressService>();
+builder.Services.AddScoped(typeof(PaginationService<>));
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IProductService, EcommerceMVC.Areas.Admin.Services.ProductService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.ICategoryService, EcommerceMVC.Areas.Admin.Services.CategoryService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IBrandService, EcommerceMVC.Areas.Admin.Services.BrandService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IOrderService, EcommerceMVC.Areas.Admin.Services.OrderService>();
 builder.Services.AddScoped<EcommerceMVC.Areas.Admin.Services.IUserService, EcommerceMVC.Areas.Admin.Services.UserService>();
+
+builder.Services.AddTransient<EcommerceMVC.Areas.Admin.Services.IEmailService, EcommerceMVC.Areas.Admin.Services.EmailService>();
 
 var app = builder.Build();
 
