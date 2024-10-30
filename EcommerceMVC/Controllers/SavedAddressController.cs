@@ -27,7 +27,7 @@ public class SavedAddressController : Controller
     [HttpGet]
     public IActionResult AddAddress()
     {
-        return RedirectToAction("Index");
+        return View();
     }
 
     [HttpPost]
@@ -39,8 +39,22 @@ public class SavedAddressController : Controller
             var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             address.UserId = userId;
             await _addressService.AddAsync(address);
-            return RedirectToAction("ListAddresses");
+            TempData["Success"] = "Address added successfully";
+            return RedirectToAction("Index");
         }
+        return RedirectToAction("Index");
+    }
+    
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var address = await _addressService.GetByIdAsync(id);
+        if (address == null)
+        {
+            return NotFound();
+        }
+
+        _addressService.DeleteAsync(id);
+        TempData["Success"] = "Address deleted successfully";
         return RedirectToAction("Index");
     }
 }

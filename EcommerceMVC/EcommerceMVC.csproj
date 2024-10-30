@@ -29,15 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <AdditionalFiles Include="Areas\Admin\Views\Brand\Create.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Brand\Edit.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Brand\Index.cshtml" />
-    <AdditionalFiles Include="Areas\Admin\Views\Shared\ViewComponents\Brands\Default.cshtml" />
-    <AdditionalFiles Include="Areas\Admin\Views\Shared\ViewComponents\Categories\Default.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_NotificationPartial.cshtml" />
@@ -49,6 +43,11 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Components\Brands\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Components\Categories\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\ViewComponents\Brands\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\ViewComponents\" />
   </ItemGroup>
 
 </Project>

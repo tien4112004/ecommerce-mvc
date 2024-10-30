@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
-            <a asp-controller="Brand" asp-action="Create" class="btn btn-info">New brand</a>
+            <a asp-area="Admin" asp-controller="Brand" asp-action="Create" class="btn btn-info">New brand</a>
             <h5 class="card-header">Brands</h5>
             <div class="card-body">
                 <div class="table-responsive">
@@ -38,9 +38,9 @@
                                     <td>@brand.Status</td>
                                     <td><img src="~/media/products/@brand.Image" width="120" alt="@brand.Name" /></td>
                                     <td>
-                                        <a asp-controller="Brand" asp-action="Edit" asp-route-brandId="@brand.Id"
+                                        <a asp-area="Admin" asp-controller="Brand" asp-action="Edit" asp-route-brandId="@brand.Id"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <a asp-controller="Brand" asp-action="Delete"
+                                        <a asp-area="Admin" asp-controller="Brand" asp-action="Delete"
                                             asp-route-brandId="@brand.Id" class="btn btn-danger btn-sm confirmDeletion">Delete</a>
                                     </td>
                                 </tr>

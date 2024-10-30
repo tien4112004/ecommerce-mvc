@@ -17,7 +17,9 @@ namespace EcommerceMVC.Data.Models
 		public decimal Price { get; set; }
 		public string Image { get; set; }
 		public int Status { get; set; }
-
+		public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+		public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+		
 		[NotMapped]
 		[FileExtension]
 		public IFormFile ImageUpload { get; set; }

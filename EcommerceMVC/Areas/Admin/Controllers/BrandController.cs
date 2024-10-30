@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 namespace EcommerceMVC.Areas.Admin.Controllers;
 
 [Area("Admin")]
-// [Authorize]
 [Authorize(Roles = UserRoles.Administrator)]
 public class BrandController : Controller {
     private readonly IProductService _productService;

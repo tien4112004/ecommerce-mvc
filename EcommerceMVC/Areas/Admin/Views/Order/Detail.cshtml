@@ -6,7 +6,7 @@
 
 <h3>Order: @Model.OrderId</h3>
 
-<a class="btn btn-danger btn-sm confirmDeletion" asp-controller="Order" asp-action="CancelOrder" asp-route-orderId="@Model.OrderId">Cancel order</a>
+<a class="btn btn-danger btn-sm confirmDeletion" asp-area="Admin" asp-controller="Order" asp-action="CancelOrder" asp-route-orderId="@Model.OrderId">Cancel order</a>
 
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
     <div class="card">

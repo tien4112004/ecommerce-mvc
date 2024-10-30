@@ -2,17 +2,19 @@
 
 @{
     ViewData["Title"] = "All orders";
+    var statusText = new[] { "Ordered", "Not paid", "Shipped", "Completed", "Cancelled", "Delivered", "Confirmed",
+"Prepared" };
 }
 
-<h5 class="card-header">Orders</h5>
+<h3 class="card-header">Orders</h3>
 <div class="card-body">
     <div class="table-responsive">
         <table class="table table-striped table-bordered first">
             <thead>
                 <tr>
+                    @* <th>#</th> *@
                     <th>ID</th>
                     <th>Created time</th>
-                    <th>User</th>
                     <th>Total amount</th>
                     <th>Address</th>
                     <th>Status</th>
@@ -23,12 +25,12 @@
                 @foreach (var order in @Model)
                 {
                     <tr>
+                        @* <td>@(Model.ToList().IndexOf(order) + 1)</td> *@
                         <td>@order.OrderId</td>
                         <td>@order.CreatedTime</td>
-                        <td>@order.UserId</td>
                         <td>@order.TotalAmount</td>
-                        <td>order.Address</td>
-                        <td>@order.Status</td>
+                        <td>@order.FullAddress</td>
+                        <td>@statusText[order.Status]</td>
                         <td>
                             <a asp-controller="Order" asp-action="Detail" asp-route-orderId="@order.OrderId"
                                 class="btn btn-warning btn-sm">Detail</a>

@@ -18,11 +18,36 @@ namespace EcommerceMVC.Data
 		{
 			base.OnModelCreating(modelBuilder);
 
+			modelBuilder.Entity<Product>()
+				.Property(p => p.CreatedAt)
+				.HasDefaultValueSql("GETUTCDATE()");
+
+			modelBuilder.Entity<Product>()
+				.Property(p => p.UpdatedAt)
+				.HasDefaultValueSql("GETUTCDATE()");
+
+			modelBuilder.Entity<Product>()
+				.Property(p => p.UpdatedAt)
+				.ValueGeneratedOnAddOrUpdate()
+				.HasDefaultValueSql("GETUTCDATE()");
+			
 			modelBuilder.Entity<Order>()
 				.HasMany(o => o.OrderDetails)
 				.WithOne()
 				.HasForeignKey(od => od.OrderId)
 				.OnDelete(DeleteBehavior.Cascade);
+		}
+		
+		public override int SaveChanges()
+		{
+			foreach (var entry in ChangeTracker.Entries<Product>())
+			{
+				if (entry.State == EntityState.Modified)
+				{
+					entry.Entity.UpdatedAt = DateTime.UtcNow;
+				}
+			}
+			return base.SaveChanges();
 		}
 
 		public DbSet<Brand> Brands { get; set; }
