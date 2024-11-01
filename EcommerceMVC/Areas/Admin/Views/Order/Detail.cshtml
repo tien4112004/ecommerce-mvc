@@ -2,6 +2,17 @@
 
 @{
     ViewData["Title"] = "Orders";
+    var statusBadges = new Dictionary<int, string>
+    {
+        { OrderStatus.NOTPAID, "<span class=\"badge badge-brand\">Not paid</span>" },
+        { OrderStatus.ORDERED, "<span class=\"badge badge-primary\">Ordered</span>" },
+        { OrderStatus.CONFIRMED, "<span class=\"badge badge-info\">Confirmed</span>" },
+        { OrderStatus.PREPARED, "<span class=\"badge badge-light\">Prepared</span>" },
+        { OrderStatus.SHIPPED, "<span class=\"badge badge-secondary\">Shipped</span>" },
+        { OrderStatus.COMPLETED, "<span class=\"badge badge-success\">Completed</span>" },
+        { OrderStatus.DELIVERED, "<span class=\"badge badge-info\">Ordered</span>" },
+        { OrderStatus.CANCELLED, "<span class=\"badge badge-danger\">Cancelled</span>" },
+    };
 }
 
 <h3>Order: @Model.OrderId</h3>
@@ -36,7 +47,20 @@
             </tr>
             <tr>
                 <td><b>Status</b></td>
-                <td>@Model.Status</td>
+                <td style="flex: auto">@Html.Raw(statusBadges[Model.Status])                
+                @{
+                    switch (Model.Status)
+                    {
+                        case OrderStatus.NOTPAID:
+                        case OrderStatus.ORDERED:
+                            <a class="btn btn-success btn-sm" asp-area="Admin" asp-controller="Order" asp-action="ConfirmOrder" asp-route-orderId="@Model.OrderId">Confirm</a>
+                            break;
+                        case OrderStatus.CONFIRMED:
+                            <a class="btn btn-warning btn-sm" asp-area="Admin" asp-controller="Order" asp-action="PrepareOrder" asp-route-orderId="@Model.OrderId">Prepare</a>
+                            break;
+                    }
+                }
+                </td>
             </tr>
         </tbody>
     </table>
@@ -73,6 +97,11 @@
                     </tr>
                 }
                 </tbody>
+                <tfoot>
+                    <td colspan="3"></td>
+                    <td>Total</td>
+                    <td>@Model.TotalAmount</td>
+                </tfoot>
             </table>
         </div>
     </div>

@@ -1,5 +1,5 @@
 # Set default behavior to automatically normalize line endings
-* text=auto
+* text=crlf
 
 # Explicitly declare text files you want to always be normalized and converted to LF in the repository
 *.cs text

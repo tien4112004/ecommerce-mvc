@@ -32,6 +32,18 @@ public class OrderController : Controller
     public async Task<IActionResult> CancelOrder(string orderId)
     {
         await _orderService.UpdateOrderStatusAsync(orderId, OrderStatus.CANCELLED);
-        return RedirectToAction(nameof(Detail), new { orderId });
+        return RedirectToAction(nameof(Detail), new { area = "Admin", orderId });
+    }
+    
+    public async Task<IActionResult> ConfirmOrder(string orderId)
+    {
+        await _orderService.UpdateOrderStatusAsync(orderId, OrderStatus.CONFIRMED);
+        return RedirectToAction(nameof(Detail), new { area = "Admin", orderId });
+    }
+    
+    public async Task<IActionResult> PrepareOrder(string orderId)
+    {
+        await _orderService.UpdateOrderStatusAsync(orderId, OrderStatus.PREPARED);
+        return RedirectToAction(nameof(Detail), new { area = "Admin", orderId });
     }
 }

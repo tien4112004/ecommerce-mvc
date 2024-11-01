@@ -36,7 +36,6 @@
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_NotificationPartial.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_ProductCard.cshtml" />
-    <AdditionalFiles Include="Areas\Admin\Views\Shared\_Sidebar.cshtml" />
     <AdditionalFiles Include="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 

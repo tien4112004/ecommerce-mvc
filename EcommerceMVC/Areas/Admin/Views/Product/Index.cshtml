@@ -34,7 +34,7 @@
                                     @* <th scope="row">1</th> *@
                                     <td>@product.Id</td>
                                     <td>@product.Name</td>
-                                    <td>@product.Description</td>
+                                    <td>@Html.Raw(product.Description)</td>
                                     <td>@product.Price</td>
                                     <td><img src="~/media/products/@product.Image" width="120" alt="@product.Name" /></td>
                                     <td>@product.Slug</td>

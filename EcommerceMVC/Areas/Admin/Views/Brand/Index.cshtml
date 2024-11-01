@@ -33,7 +33,7 @@
                                     @* <th scope="row">1</th> *@
                                     <td>@brand.Id</td>
                                     <td>@brand.Name</td>
-                                    <td>@brand.Description</td>
+                                    <td>@Html.Raw(brand.Description)</td>
                                     <td>@brand.Slug</td>
                                     <td>@brand.Status</td>
                                     <td><img src="~/media/products/@brand.Image" width="120" alt="@brand.Name" /></td>

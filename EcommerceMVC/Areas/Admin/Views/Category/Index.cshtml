@@ -31,7 +31,7 @@
                                     @* <th scope="row">1</th> *@
                                     <td>@category.Id</td>
                                     <td>@category.Name</td>
-                                    <td>@category.Description</td>
+                                    <td>@Html.Raw(category.Description)</td>
                                     <td>@category.Slug</td>
                                     <td>@category.Status</td>
                                     <td>

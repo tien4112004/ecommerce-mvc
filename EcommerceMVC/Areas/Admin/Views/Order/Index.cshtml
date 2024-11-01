@@ -3,16 +3,16 @@
 @{
     ViewData["Title"] = "All orders";
     var statusBadges = new Dictionary<int, string>
-{
-{ OrderStatus.ORDERED, "<span class=\"badge badge-primary\">Ordered</span>" },
-{ OrderStatus.NOTPAID, "<span class=\"badge badge-brand\">Not paid</span>" },
-{ OrderStatus.SHIPPED, "<span class=\"badge badge-secondary\">Ordered</span>" },
-{ OrderStatus.COMPLETED, "<span class=\"badge badge-success\">Completed</span>" },
-{ OrderStatus.CANCELLED, "<span class=\"badge badge-danger\">Cancelled</span>" },
-{ OrderStatus.DELIVERED, "<span class=\"badge badge-info\">Ordered</span>" },
-{ OrderStatus.CONFIRMED, "<span class=\"badge badge-info\">Ordered</span>" },
-{ OrderStatus.PREPARED, "<span class=\"badge badge-light\">Ordered</span>" },
-};
+    {
+        { OrderStatus.ORDERED, "<span class=\"badge badge-primary\">Ordered</span>" },
+        { OrderStatus.NOTPAID, "<span class=\"badge badge-brand\">Not paid</span>" },
+        { OrderStatus.SHIPPED, "<span class=\"badge badge-secondary\">Ordered</span>" },
+        { OrderStatus.COMPLETED, "<span class=\"badge badge-success\">Completed</span>" },
+        { OrderStatus.CANCELLED, "<span class=\"badge badge-danger\">Cancelled</span>" },
+        { OrderStatus.DELIVERED, "<span class=\"badge badge-info\">Ordered</span>" },
+        { OrderStatus.CONFIRMED, "<span class=\"badge badge-info\">Ordered</span>" },
+        { OrderStatus.PREPARED, "<span class=\"badge badge-light\">Ordered</span>" },
+    };
 }
 
 <h2 class="pageheader-title">Orders</h2>
