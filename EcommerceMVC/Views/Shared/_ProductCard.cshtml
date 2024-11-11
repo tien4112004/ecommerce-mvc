@@ -4,32 +4,42 @@
 }
 
 <div class="product-image-wrapper">
-	<div class="single-products">
-		<a asp-controller="Product" asp-action="Detail" asp-route-productId="@Model.Id">
-			<div class="productinfo text-center">
-				<div class="item-img productinfo">
-					<img src="~/media/products/@Model.Image" alt="@Model.Name" class="center-block" />
-				</div>
-				<h5>@Model.Name</h5>
-				<h4 class="price">$@Model.Price</h4>
-				<a class="btn btn-default add-to-cart" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.Id"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-			</div>
-		</a>
-	</div>
-	<div class="choose">
-		<ul class="nav nav-pills nav-justified">
-			<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-			<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-		</ul>
-	</div>
+ <div class="single-products">
+  <a asp-controller="Product" asp-action="Detail" asp-route-productId="@Model.Id">
+   <div class="productinfo text-center">
+    <div class="item-img productinfo">
+     <img src="~/media/products/@Model.Image" alt="@Model.Name" class="center-block" />
+    </div>
+    <h5>@Model.Name</h5>
+    <h4 class="price">$@Model.Price</h4>
+   </div>
+  </a>
+  <button class="btn btn-default add-to-cart center-block" data-product-id="@Model.Id" onclick="addToCart(@Model.Id)"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+ </div>
+ <div class="choose">
+  <ul class="nav nav-pills nav-justified">
+   <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+   <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+  </ul>
+ </div>
 </div>
-@* <!--
-<div class="product-overlay">
-<div class="overlay-content">
-<p>@product.Name</p>
-<h4>$@product.Price</h4>
-<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-cart</a>
-</div>
-</div>
---> *@
+
+<script>
+    function addToCart(productId) {
+        $.ajax({
+            url: '@Url.Action("AddToCart", "Cart")',
+            type: 'POST',
+            data: { productId: productId },
+            success: function (response) {
+                if (response.success) {
+                    showToast('success', response.message);
+                } else {
+                    showToast('error', response.message);
+                }
+            },
+            error: function () {
+                showToast('error', 'An error occurred while adding the product to the cart.');
+            }
+        });
+    }
+</script>

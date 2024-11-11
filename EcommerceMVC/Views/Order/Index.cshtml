@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "All orders";
-    var statusText = new[] { "Ordered", "Not paid", "Shipped", "Completed", "Cancelled", "Delivered", "Confirmed",
-"Prepared" };
+    var statusText = new[] { "Not paid", "Ordered", "Confirmed", "Prepared", "Shipped", "Completed", "Delivered", "Cancelled"
+ };
 }
 
 <h3 class="card-header">Orders</h3>
@@ -42,7 +42,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Created time</th>
-                    <th>User</th>
                     <th>Total amount</th>
                     <th>Address</th>
                     <th>Status</th>

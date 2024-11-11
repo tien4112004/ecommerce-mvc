@@ -44,7 +44,7 @@ namespace EcommerceMVC.Data.Controllers
 			var product = _context.Products.Find(productId);
 			if (product == null)
 			{
-				return Redirect("/404");
+				return Json(new { success = false, message = "Product not found." });
 			}
 
 			var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY) ?? new List<CartItem>();
@@ -66,8 +66,7 @@ namespace EcommerceMVC.Data.Controllers
 			}
 
 			HttpContext.Session.Set(CART_KEY, cart);
-			TempData["Success"] = "Added to cart successfully.";
-			return Redirect(Request.Headers["Referer"].ToString());
+			return Json(new { success = true, message = "Added to cart successfully." });
 		}
 
 		public IActionResult DecreaseQuantity(int productId)

@@ -1,9 +1,19 @@
-﻿@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success notification">@TempData["success"]</div>
-}
+﻿@section Scripts {
+    <script>
+        $(document).ready(function () {
+            @if (TempData["Success"] != null)
+            {
+                <text>
+                    showToast('success', '@TempData["Success"]');
+                </text>
+            }
 
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger notification">@TempData["error"]</div>
+            @if (TempData["Error"] != null)
+            {
+                <text>
+                    showToast('error', '@TempData["Error"]');
+                </text>
+            }
+        });
+    </script>
 }

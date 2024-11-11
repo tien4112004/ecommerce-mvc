@@ -53,7 +53,7 @@ public class SavedAddressController : Controller
             return NotFound();
         }
 
-        _addressService.DeleteAsync(id);
+        await _addressService.DeleteAsync(id);
         TempData["Success"] = "Address deleted successfully";
         return RedirectToAction("Index");
     }
