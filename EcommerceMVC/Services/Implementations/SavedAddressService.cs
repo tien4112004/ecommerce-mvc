@@ -41,6 +41,7 @@ public class SavedAddressService : ISavedAddressService
         }
 
         _context.SavedAddresses.Remove(savedAddress);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<ShippingAddress> GetByIdAsync(Guid id)

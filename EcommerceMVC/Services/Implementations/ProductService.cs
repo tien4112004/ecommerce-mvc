@@ -22,6 +22,14 @@ public class ProductService : IProductService
                         .Where(p => p.Status != ProductStatus.Inactive)
                         .ToListAsync();
     }
+    
+    public async Task<PagedResult<Product>> SearchProductsAsync(string query, int page, int pageSize)
+    {
+        query = query.ToLower();
+        var searchQuery = _context.Products
+            .Where(p => p.Name.ToLower().Contains(query) || p.Description.ToLower().Contains(query));
+        return await _paginationService.GetPaginatedData(searchQuery, page, pageSize);
+    }
 
     public async Task<Product> GetProductByIdAsync(int productId)
     {

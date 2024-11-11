@@ -1,0 +1,22 @@
+﻿@model EcommerceMVC.Helpers.PagedResult<EcommerceMVC.Data.Models.Product>
+
+@{
+    ViewData["Title"] = "Search result for " + ViewBag.Query;
+}
+
+<div class="col-sm-3">
+    @await Html.PartialAsync("_Sidebar")
+</div>
+
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title">Search for @ViewBag.Query</h2>
+        @foreach (var product in Model.Items)
+        {
+            <div class="col-sm-4">
+                @await Html.PartialAsync("_ProductCard", product)
+            </div>
+        }
+    </div><!--features_items-->
+</div>

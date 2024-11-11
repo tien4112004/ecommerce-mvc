@@ -35,5 +35,13 @@ namespace EcommerceMVC.Controllers
 			}
 			return View(product);
 		}
+		
+		[HttpPost]
+		public async Task<IActionResult> Search(string query, int page = 1, int pageSize = 12)
+		{
+			var paginatedProducts = await _productService.SearchProductsAsync(query, page, pageSize);
+			ViewBag.Query = query;
+			return View(paginatedProducts);
+		}
 	}
 }
