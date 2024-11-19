@@ -75,3 +75,6 @@ $RECYCLE.BIN/
 # assets file
 media/
 assets/
+
+# Rider
+.idea/
