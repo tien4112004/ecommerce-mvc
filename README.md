@@ -5,10 +5,9 @@ EcommerceMVC is a robust ASP.NET Core MVC application designed to manage an e-co
 ## Technical stack
 
 - Backend: ASP .NET Core 8.0
-- Frontend: Razor Pages, HTML, CSS, JavaScript
+- Frontend: Razor Pages, HTML, CSS (Bootstrap 4), JavaScript
 - Database: SQL Server (ORM: EF Core)
 - Testing: MSTest
-- API Documentation: Swagger
 
 ## Features
 
