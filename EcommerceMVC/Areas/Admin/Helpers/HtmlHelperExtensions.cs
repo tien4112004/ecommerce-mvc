@@ -8,11 +8,11 @@ namespace EcommerceMVC.Areas.Admin.Helpers
         public static IHtmlContent NavigationLink(
             this IHtmlHelper html,
             string linkText,
-            string areaName,
             string actionName,
-            string controllerName)
+            string controllerName,
+            string areaName)
         {
-            string contextArea = (string)html.ViewContext.RouteData.Values["area"];
+            string contextArea = areaName ?? (string)html.ViewContext.RouteData.Values["area"];
             string contextAction = (string)html.ViewContext.RouteData.Values["action"];
             string contextController = (string)html.ViewContext.RouteData.Values["controller"];
 
